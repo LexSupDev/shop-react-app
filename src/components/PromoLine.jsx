@@ -1,3 +1,5 @@
+import close from "/src/assets/close.png"
+
 export const PromoLine = () => {
   return (
     <div className="bg-black">
@@ -9,7 +11,7 @@ export const PromoLine = () => {
           </span>
         </p>
         <button>
-          <img src="assets/close.png" alt="Close Promo" />
+          <img src={close} alt="Close Promo" />
         </button>
       </div>
     </div>
