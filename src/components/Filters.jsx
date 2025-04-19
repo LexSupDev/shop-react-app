@@ -3,7 +3,7 @@ import filter from "/src/assets/filter.png";
 export const Filters = () => {
   return (
     <>
-      <div className="max-w-[295px] border rounded-2xl border-gray-200 p-6">
+      <div className="max-w-[295px] border rounded-2xl border-gray-200 p-6 self-start">
         <div className="pb-6 flex justify-between items-center">
           <p className="font-bold text-xl">Filters</p>
           <span className="">
