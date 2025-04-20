@@ -1,12 +1,12 @@
 import { PromoLine } from "./PromoLine";
-import search from "/src/assets/search.png";
 import avatar from "/src/assets/avatar.png";
 import trash from "/src/assets/trash.png";
 import logo from "/src/assets/logo.png";
+import { Search } from "./Search";
 
 const navMenu = ["Shop", "On sale", "New arrival", "Brands"]
 
-export const Header = () => {
+export const Header = ({searchQuery, setSearchQuery}) => {
   return (
     <>
       <PromoLine />
@@ -20,16 +20,7 @@ export const Header = () => {
           <nav className="flex gap-6">
             {navMenu.map((el) => <a href={`#${el.toLowerCase().replace(" ", "-")}`}>{el}</a>)}
           </nav>
-          <div className="w-full max-w-[577px] relative">
-            <input
-              type="text"
-              className="bg-[#F0F0F0] rounded-3xl w-full p-3 pl-[52px] relative"
-              placeholder="Search for products..."
-            />
-            <span className="absolute w-[21px] left-4 top-3" aria-hidden="true">
-              <img src={search} alt="Search icon" />
-            </span>
-          </div>
+          <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
           <div className="flex gap-3.5">
             <button>
               <img src={trash} alt="Trash" />

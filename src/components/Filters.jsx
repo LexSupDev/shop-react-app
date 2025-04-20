@@ -1,32 +1,28 @@
 import filter from "/src/assets/filter.png";
+import { goods } from "./goods";
+import { useState } from "react";
+import RangeSlider from "./RangeSlider";
 
-const categories = ["T-shirts", "Shorts", "Shirts", "Hoodie", "Jeans"];
-const colors = [
-  "#00C12B",
-  "#F50606",
-  "#F5DD06",
-  "#F57906",
-  "#06CAF5",
-  "#063AF5",
-  "#7D06F5",
-  "#F506A4",
-  "#FFFFFF",
-  "#000000",
-];
-const size = [
+const categories = [...new Set(goods.map(el => el.category))];
+const colors = [...new Set(goods.flatMap(el => el.colors))];
+const sizeOrder = [
   "XX-Small",
   "X-Small",
   "Small",
   "Medium",
   "Large",
   "X-Large",
-  "XX-Large",
+  "2X-Large",
   "3X-Large",
   "4X-Large",
 ];
+const size = [...new Set(goods.flatMap(el => el.size))].sort(
+  (a, b) => sizeOrder.indexOf(a) - sizeOrder.indexOf(b)
+);
 const style = ["Casual", "Formal", "Party", "Gym"];
 
-export const Filters = () => {
+export const Filters = ({setSearchQuery}) => {
+  const [selectedColor, setSelectedColor] = useState(null);
   return (
     <>
       <div className="max-w-[295px] border rounded-2xl border-gray-200 p-6 self-start">
@@ -40,21 +36,24 @@ export const Filters = () => {
           <ul className="filters_list-item flex flex-col gap-3 w-full">
             {categories.map((el) => (
               <li>
-                <a href={`#${el.toLowerCase().replace(" ", "-")}`}>{el}</a>
+                <a href={`#${el.toLowerCase().replace(" ", "-")}`} onClick={() => setSearchQuery(el)}>{el}</a>
               </li>
             ))}
           </ul>
         </div>
         <div className="filters_item flex-col">
           <p className="filters_item-title mb-5 font-bold text-xl">Price</p>
-          <input type="range" />
+          
+            <RangeSlider/>
         </div>
         <div className="filters_item flex-col">
           <p className="filters_item-title mb-5 font-bold text-xl">Colors</p>
           <div className="filters_item-colors flex flex-wrap gap-[15px]">
             {colors.map((el) => (
-              <label className={`bg-[${el}]`}>
-                <input type="color" value={el} className="hidden" />
+              <label style={{ backgroundColor: el }} className={`${
+                selectedColor === el ? "border-black" : "border-transparent"
+              }`}>
+                <input type="checkbox" defaultValue={el} onClick={() => setSelectedColor(el)} className="hidden" />
               </label>
             ))}
           </div>

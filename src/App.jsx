@@ -4,16 +4,19 @@ import "./App.css";
 import { Breadcrumbs } from './components/Breadcrumbs';
 import { Filters } from './components/Filters';
 import { Catalog } from './components/Catalog';
+import { goods } from './components/goods';
 
 function App() {
+
+  const [searchQuery, setSearchQuery] = useState('');
   
   return (
     <>
-      <Header/>
+      <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
       <Breadcrumbs/>
       <div className="wrap flex gap-5">
-        <Filters/>
-        <Catalog/>
+        <Filters setSearchQuery={setSearchQuery}/>
+        <Catalog searchQuery={searchQuery}/>
       </div>
     </>
   )
