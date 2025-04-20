@@ -4,6 +4,8 @@ import avatar from "/src/assets/avatar.png";
 import trash from "/src/assets/trash.png";
 import logo from "/src/assets/logo.png";
 
+const navMenu = ["Shop", "On sale", "New arrival", "Brands"]
+
 export const Header = () => {
   return (
     <>
@@ -16,10 +18,7 @@ export const Header = () => {
             className="h-[22px]"
           />
           <nav className="flex gap-6">
-            <a href="shop">Shop</a>
-            <a href="on-sale">On sale</a>
-            <a href="new-arrival">New arrival</a>
-            <a href="brands">Brands</a>
+            {navMenu.map((el) => <a href={`#${el.toLowerCase().replace(" ", "-")}`}>{el}</a>)}
           </nav>
           <div className="w-full max-w-[577px] relative">
             <input
