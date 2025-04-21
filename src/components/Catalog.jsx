@@ -17,7 +17,7 @@ export const Catalog = ({searchQuery}) => {
           </div>
         </div>
         <div className="flex flex-wrap gap-x-5 gap-y-9">
-          {searchQuery ? goods.filter(el => el.category.toLowerCase() == searchQuery.toLowerCase()).map((el) => (
+          {searchQuery ? goods.filter(el => el.category.toLowerCase().includes(searchQuery.toLowerCase())).map((el) => (
             <Card
               key={el.id}
               image={el.image}
