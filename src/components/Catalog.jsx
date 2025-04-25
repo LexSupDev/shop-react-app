@@ -1,7 +1,7 @@
 import { Card } from "./Card";
 
 
-export const Catalog = ({filteredGoods, searchQuery }) => {
+export const Catalog = ({filteredGoods, searchQuery, handleFavorites, favoriteList }) => {
   return (
     <>
       <div className="flex w-full flex-col">
@@ -24,10 +24,13 @@ export const Catalog = ({filteredGoods, searchQuery }) => {
           ).map((el) => (
             <Card
               key={el.id}
+              id={el.id}
               image={el.image}
               title={el.title}
               stars={el.stars}
               price={el.price}
+              handleFavorites={handleFavorites}
+              favoriteList={favoriteList}
             />
           ))}
         </div>
