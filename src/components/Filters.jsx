@@ -21,8 +21,8 @@ const size = [...new Set(goods.flatMap(el => el.size))].sort(
 );
 const style = ["Casual", "Formal", "Party", "Gym"];
 
-export const Filters = ({setSearchQuery}) => {
-  const [selectedColor, setSelectedColor] = useState(null);
+export const Filters = ({filterCatalog}) => {
+  
   return (
     <>
       <div className="max-w-[295px] border rounded-2xl border-gray-200 p-6 self-start">
@@ -36,7 +36,7 @@ export const Filters = ({setSearchQuery}) => {
           <ul className="filters_list-item flex flex-col gap-3 w-full">
             {categories.map((el) => (
               <li>
-                <a href={`#${el.toLowerCase().replace(" ", "-")}`} onClick={() => setSearchQuery(el)}>{el}</a>
+                <a href={`#${el.toLowerCase().replace(" ", "-")}`} onClick={() => filterCatalog(el)}>{el}</a>
               </li>
             ))}
           </ul>
@@ -50,10 +50,10 @@ export const Filters = ({setSearchQuery}) => {
           <p className="filters_item-title mb-5 font-bold text-xl">Colors</p>
           <div className="filters_item-colors flex flex-wrap gap-[15px]">
             {colors.map((el) => (
-              <label style={{ backgroundColor: el }} className={`${
-                selectedColor === el ? "border-black" : "border-transparent"
+              <label style={{ backgroundColor: el }} className={`$
+                //selectedColor === el ? "border-black" : "border-transparent"
               }`}>
-                <input type="checkbox" defaultValue={el} onClick={() => setSelectedColor(el)} className="hidden" />
+                <input type="checkbox" defaultValue={el} onClick={() => filterCatalog(el)} className="hidden" />
               </label>
             ))}
           </div>
