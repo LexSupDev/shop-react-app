@@ -1,20 +1,18 @@
 import { useState } from "react";
-import { Header } from "./components/Header";
 import "./App.css";
-import { Breadcrumbs } from "./components/Breadcrumbs";
-import { Filters } from "./components/Filters";
-import { Catalog } from "./components/Catalog";
 import { goods } from "./components/goods";
+import { MainPage } from "./MainPage";
+import { Route, Routes } from "react-router";
+import { FavoritePage } from "./FavoritePage";
+import { Header } from "./components/Header";
+import { Breadcrumbs } from "./components/Breadcrumbs";
+import { Cart } from "./Cart";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedColor, setSelectedColor] = useState(null);
   const [filteredGoods, setFilteredGoods] = useState(goods);
-  const [favoriteList, setFavoriteList] = useState([])
-
-  const handleFavorites = (id) => {
-    favoriteList.includes(id) ? setFavoriteList([...favoriteList.filter(el => el !== id)]) : setFavoriteList([...favoriteList, id])
-  }
+  const [favoriteList, setFavoriteList] = useState([]);
 
   const filterCatalog = (e) => {
     setSelectedColor(e);
@@ -25,17 +23,38 @@ function App() {
 
   return (
     <>
-      <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} favoriteList={favoriteList} />
+      <Header
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        favoriteList={favoriteList}
+      />
       <Breadcrumbs />
-      <div className="wrap flex gap-5">
-        <Filters filterCatalog={filterCatalog} />
-        <Catalog
-          filteredGoods={filteredGoods}
-          searchQuery={searchQuery}
-          handleFavorites={handleFavorites}
-          favoriteList={favoriteList}
+      <Routes>
+        <Route
+          path="/shop-react-app/"
+          element={
+            <MainPage
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              favoriteList={favoriteList}
+              setFavoriteList={setFavoriteList}
+              filterCatalog={filterCatalog}
+              filteredGoods={filteredGoods}
+            />
+          }
         />
-      </div>
+        <Route
+          path="/shop-react-app/favorite"
+          element={
+            <FavoritePage
+              favoriteList={favoriteList}
+              setFavoriteList={setFavoriteList}
+              goods={goods}
+            />
+          }
+        />
+        <Route path="/shop-react-app/cart" element={<Cart />} />
+      </Routes>
     </>
   );
 }

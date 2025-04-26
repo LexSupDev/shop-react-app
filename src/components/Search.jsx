@@ -3,7 +3,7 @@ import search from "/src/assets/search.png";
 export const Search = ({searchQuery, setSearchQuery}) => {
   return (
     <>
-      <div className="w-full max-w-[577px] relative">
+      <div className="w-full max-w-[560px] relative">
         <input
           type="text"
           className="bg-[#F0F0F0] rounded-3xl w-full p-3 pl-[52px] relative"

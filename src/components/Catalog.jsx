@@ -1,7 +1,11 @@
 import { Card } from "./Card";
 
-
-export const Catalog = ({filteredGoods, searchQuery, handleFavorites, favoriteList }) => {
+export const Catalog = ({
+  filteredGoods,
+  searchQuery,
+  favoriteList,
+  setFavoriteList,
+}) => {
   return (
     <>
       <div className="flex w-full flex-col">
@@ -29,8 +33,8 @@ export const Catalog = ({filteredGoods, searchQuery, handleFavorites, favoriteLi
               title={el.title}
               stars={el.stars}
               price={el.price}
-              handleFavorites={handleFavorites}
               favoriteList={favoriteList}
+              setFavoriteList={setFavoriteList}
             />
           ))}
         </div>
