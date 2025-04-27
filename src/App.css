@@ -20,18 +20,6 @@
   .filters_item-title {
     @apply relative after:absolute after:content-["."] after:text-transparent after:block after:w-[12px] after:bg-[url("/src/assets/arrow-top.png")] after:bg-no-repeat after:right-0 after:top-[10px];
   }
-
-  .filters_list-item li a{
-    @apply relative block after:absolute after:content-["."] after:text-transparent after:block after:w-[12px] after:bg-[url("/src/assets/arrow-right.png")] after:bg-no-repeat after:right-0 after:top-1.5;
-  }
-
-  .filters_item-colors label {
-    @apply rounded-[100%] w-[37px] h-[37px] border border-black/20;
-  }
-
-  .filters_item-size label {
-    @apply text-sm rounded-4xl px-5 py-2.5 bg-gray-100;
-  }
 }
 
 @layer utilities {

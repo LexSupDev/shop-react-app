@@ -35,6 +35,9 @@ export const Filters = ({ filterCatalog }) => {
             {categories.map((el) => (
               <li>
                 <a
+                  className={
+                    "relative block after:absolute after:content-['.'] after:text-transparent after:block after:w-[12px] after:bg-[url('/src/assets/arrow-right.png')] after:bg-no-repeat after:right-0 after:top-1.5"
+                  }
                   href={`#${el.toLowerCase().replace(" ", "-")}`}
                   onClick={() => filterCatalog(el)}
                 >
@@ -46,7 +49,6 @@ export const Filters = ({ filterCatalog }) => {
         </div>
         <div className="filters_item flex-col">
           <p className="filters_item-title mb-5 font-bold text-xl">Price</p>
-
           <RangeSlider />
         </div>
         <div className="filters_item flex-col">
@@ -55,9 +57,8 @@ export const Filters = ({ filterCatalog }) => {
             {colors.map((el) => (
               <label
                 style={{ backgroundColor: el }}
-                className={`$
-                //selectedColor === el ? "border-black" : "border-transparent"
-              }`}
+                className="rounded-[100%] w-[37px] h-[37px] border border-black/20"
+                /*{`$//selectedColor === el ? "border-black" : "border-transparent"}`}*/
               >
                 <input
                   type="checkbox"
@@ -73,7 +74,7 @@ export const Filters = ({ filterCatalog }) => {
           <p className="filters_item-title mb-5 font-bold text-xl">Size</p>
           <div className="filters_item-size flex flex-wrap gap-2">
             {size.map((el) => (
-              <label>
+              <label className="text-sm rounded-4xl px-5 py-2.5 bg-gray-100">
                 {el}
                 <input type="checkbox" className="hidden" />
               </label>
