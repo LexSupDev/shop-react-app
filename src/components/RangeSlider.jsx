@@ -31,20 +31,15 @@ export const RangeSlider = () => {
   return (
     <>
       <div className="w-full max-w-md px-4 py-6">
-        <div className="flex justify-between text-sm font-semibold mb-2 text-gray-700">
-          <span>Min: ${minVal}</span>
-          <span>Max: ${maxVal}</span>
-        </div>
-
         <div className="relative h-10">
           {/* Базовый трек */}
-          <div className="absolute top-1/2 left-0 right-0 h-1 bg-gray-300 rounded -translate-y-1/2" />
+          <div className="absolute top-1/2 left-0 right-0 h-1 bg-gray-300 rounded -translate-y-1/2"></div>
 
           {/* Активный диапазон */}
           <div
             ref={range}
             className="absolute top-1/2 h-1 bg-black rounded -translate-y-1/2"
-          />
+          ></div>
 
           {/* Мин ползунок */}
           <input
@@ -63,13 +58,15 @@ export const RangeSlider = () => {
             [&::-webkit-slider-thumb]:h-4
             [&::-webkit-slider-thumb]:w-4
             [&::-webkit-slider-thumb]:rounded-full
-            [&::-webkit-slider-thumb]:bg-black
+          [&::-webkit-slider-thumb]:bg-black
+            [&::-webkit-slider-thumb]:border-none
             [&::-webkit-slider-thumb]:cursor-pointer
             [&::-webkit-slider-thumb]:pointer-events-auto
             [&::-moz-range-thumb]:h-4
             [&::-moz-range-thumb]:w-4
             [&::-moz-range-thumb]:rounded-full
-            [&::-moz-range-thumb]:bg-black
+          [&::-moz-range-thumb]:bg-black
+            [&::-moz-range-thumb]:border-none
             [&::-moz-range-thumb]:cursor-pointer
             [&::-moz-range-thumb]:pointer-events-auto
           "
@@ -93,16 +90,22 @@ export const RangeSlider = () => {
             [&::-webkit-slider-thumb]:w-4
             [&::-webkit-slider-thumb]:rounded-full
             [&::-webkit-slider-thumb]:bg-black
+            [&::-webkit-slider-thumb]:border-none
             [&::-webkit-slider-thumb]:cursor-pointer
             [&::-webkit-slider-thumb]:pointer-events-auto
             [&::-moz-range-thumb]:h-4
             [&::-moz-range-thumb]:w-4
             [&::-moz-range-thumb]:rounded-full
             [&::-moz-range-thumb]:bg-black
+            [&::-moz-range-thumb]:border-none
             [&::-moz-range-thumb]:cursor-pointer
             [&::-moz-range-thumb]:pointer-events-auto
           "
           />
+        </div>
+        <div className="flex justify-between text-sm font-semibold mb-2 text-gray-700">
+          <span>{minVal}</span>
+          <span>{maxVal}</span>
         </div>
       </div>
     </>

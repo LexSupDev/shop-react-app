@@ -57,7 +57,7 @@ export const Filters = ({ filterCatalog }) => {
             {colors.map((el) => (
               <label
                 style={{ backgroundColor: el }}
-                className="rounded-[100%] w-[37px] h-[37px] border border-black/20"
+                className="rounded-[100%] w-[37px] h-[37px] border border-black/10 hasChecked-after hasChecked-before has-[:checked]:after:w-[13px] has-[:checked]:after:bg-[url('/src/assets/check.svg')] has-[:checked]:after:bg-no-repeat has-[:checked]:after:right-[11px] has-[:checked]:after:top-[13px] has-[:checked]:before:bg-black/10 has-[:checked]:before:w-full has-[:checked]:before:h-full has-[:checked]:before:rounded-full"
                 /*{`$//selectedColor === el ? "border-black" : "border-transparent"}`}*/
               >
                 <input
@@ -74,7 +74,7 @@ export const Filters = ({ filterCatalog }) => {
           <p className="filters_item-title mb-5 font-bold text-xl">Size</p>
           <div className="filters_item-size flex flex-wrap gap-2">
             {size.map((el) => (
-              <label className="text-sm rounded-4xl px-5 py-2.5 bg-gray-100">
+              <label className="text-sm rounded-4xl px-5 py-2.5 bg-gray-100 has-[:checked]:bg-black has-[:checked]:text-white">
                 {el}
                 <input type="checkbox" className="hidden" />
               </label>
