@@ -1,5 +1,3 @@
-import { Header } from "./components/Header";
-import { Breadcrumbs } from "./components/Breadcrumbs";
 import { Filters } from "./components/Filters";
 import { Catalog } from "./components/Catalog";
 
@@ -12,7 +10,7 @@ export const MainPage = ({
 }) => {
   return (
     <>
-      <div className="wrap flex gap-5">
+      <div className="wrap flex gap-5 justify-between">
         <Filters filterCatalog={filterCatalog} />
         <Catalog
           filteredGoods={filteredGoods}

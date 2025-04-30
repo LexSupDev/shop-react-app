@@ -9,7 +9,7 @@ export const Catalog = ({
   return (
     <>
       <div className="flex w-full flex-col">
-        <div className="flex justify-between items-baseline w-full mb-4">
+        <div className="flex justify-between items-baseline mb-4">
           <h1 className="font-[Satoshi-Bold] text-[32px]">Casual</h1>
           <div className="flex gap-3">
             <p>Showing 1-10 of {filteredGoods.length} Products</p>
@@ -19,7 +19,7 @@ export const Catalog = ({
             </p>
           </div>
         </div>
-        <div className="flex flex-wrap gap-x-5 gap-y-9">
+        <div className="flex flex-wrap gap-x-5 gap-y-9 self-end">
           {(searchQuery
             ? filteredGoods.filter((el) =>
                 el.category.toLowerCase().includes(searchQuery.toLowerCase())

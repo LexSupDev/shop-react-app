@@ -8,6 +8,7 @@ import { Header } from "./components/Header";
 import { Breadcrumbs } from "./components/Breadcrumbs";
 import { Cart } from "./Cart";
 import { ProductCard } from "./ProductCard";
+import { Footer } from "./components/Footer";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -57,6 +58,7 @@ function App() {
         <Route path="/shop-react-app/cart" element={<Cart />} />
         <Route path="/shop-react-app/product" element={<ProductCard/>}/>
       </Routes> 
+      <Footer />
     </>
   );
 }
