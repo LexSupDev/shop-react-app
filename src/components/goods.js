@@ -3,7 +3,7 @@ const generateId = () => Math.random().toString(36).substr(2, 9);
 export const goods = [
   {
     id: generateId(),
-    image: "/src/assets/t-shirt-1.jpg",
+    image: "src/assets/t-shirt-1.jpg",
     title: "Gradient Graphic T-shirt",
     stars: 3.5,
     price: 145,
@@ -13,7 +13,7 @@ export const goods = [
   },
   {
     id: generateId(),
-    image: "/src/assets/t-shirt-2.jpg",
+    image: "src/assets/t-shirt-2.jpg",
     title: "Polo with Tipping Details",
     stars: 4.5,
     price: 180,

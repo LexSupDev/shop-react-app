@@ -5,9 +5,9 @@ export const Footer = () => {
   return (
     <>
       
-      <footer className="bg-[#F0F0F0] mt-42 relative">
+      <footer className="bg-[#F0F0F0] mt-42">
       <Subscribe />
-        <div className="wrap pt-35 pb-20">
+        <div className="wrap mt-[-10] pb-20">
           <div className="flex flex-row justify-between border-b-1 border-gray-400 pb-12.5 mb-6">
             <div className="max-w-[298px] flex flex-col justify-between">
               <img src={logo} alt="" className="w-[167px]" />
@@ -187,11 +187,11 @@ export const Footer = () => {
           <div className="flex justify-between">
             <p className="opacity-60">Shop.co © 2000-{new Date().getFullYear()}, All Rights Reserved</p>
             <ul className="flex flew-row gap-3">
-              <li><a href="" className="w-[46px] h-[30px] bg-white flex justify-center items-center"><img src="/src/assets/visa.png" alt="" /></a></li>
-              <li><a href="" className="w-[46px] h-[30px] bg-white flex justify-center items-center"><img src="/src/assets/mastercard.png" alt="" /></a></li>
-              <li><a href="" className="w-[46px] h-[30px] bg-white flex justify-center items-center"><img src="/src/assets/paypal.png" alt="" /></a></li>
-              <li><a href="" className="w-[46px] h-[30px] bg-white flex justify-center items-center"><img src="/src/assets/apay.png" alt="" /></a></li>
-              <li><a href="" className="w-[46px] h-[30px] bg-white flex justify-center items-center"><img src="/src/assets/gpay.png" alt="" /></a></li>
+              <li><a href="" className="w-[46px] h-[30px] bg-white flex justify-center items-center"><img src="src/assets/visa.png" alt="" /></a></li>
+              <li><a href="" className="w-[46px] h-[30px] bg-white flex justify-center items-center"><img src="src/assets/mastercard.png" alt="" /></a></li>
+              <li><a href="" className="w-[46px] h-[30px] bg-white flex justify-center items-center"><img src="src/assets/paypal.png" alt="" /></a></li>
+              <li><a href="" className="w-[46px] h-[30px] bg-white flex justify-center items-center"><img src="src/assets/apay.png" alt="" /></a></li>
+              <li><a href="" className="w-[46px] h-[30px] bg-white flex justify-center items-center"><img src="src/assets/gpay.png" alt="" /></a></li>
             </ul>
           </div>
         </div>
