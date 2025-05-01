@@ -4,6 +4,10 @@
   font-family: "Satoshi-Regular", sans-serif;
 }
 
+button {
+  @apply cursor-pointer;
+}
+
 @layer components {
   .wrap {
     @apply px-[16px] sm:px-[100px] min-w-[390px] sm:max-w-[1440px] sm:mx-auto;
