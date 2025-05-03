@@ -1,26 +1,24 @@
 import filter from "/src/assets/filter.png";
-import { goods } from "./goods";
 import RangeSlider from "./RangeSlider";
 
-const categories = [...new Set(goods.map((el) => el.category))];
-const colors = [...new Set(goods.flatMap((el) => el.colors))];
-const sizeOrder = [
-  "XX-Small",
-  "X-Small",
-  "Small",
-  "Medium",
-  "Large",
-  "X-Large",
-  "2X-Large",
-  "3X-Large",
-  "4X-Large",
-];
-const size = [...new Set(goods.flatMap((el) => el.size))].sort(
-  (a, b) => sizeOrder.indexOf(a) - sizeOrder.indexOf(b)
-);
-const style = ["Casual", "Formal", "Party", "Gym"];
-
-export const Filters = ({ filterCatalog }) => {
+export const Filters = ({ filterCatalog, goods }) => {
+  const categories = [...new Set(goods.map((el) => el.category))];
+  const colors = [...new Set(goods.flatMap((el) => el.colors))];
+  const sizeOrder = [
+    "XX-Small",
+    "X-Small",
+    "Small",
+    "Medium",
+    "Large",
+    "X-Large",
+    "2X-Large",
+    "3X-Large",
+    "4X-Large",
+  ];
+  const size = [...new Set(goods.flatMap((el) => el.size))].sort(
+    (a, b) => sizeOrder.indexOf(a) - sizeOrder.indexOf(b)
+  );
+  const style = ["Casual", "Formal", "Party", "Gym"];
   return (
     <>
       <div className="sm:max-w-[295px] sm:min-w-[295px] border rounded-2xl border-gray-200 p-6 self-start">

@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
-import { goods } from "./components/goods";
 import { MainPage } from "./MainPage";
 import { Route, Routes } from "react-router";
 import { FavoritePage } from "./FavoritePage";
@@ -9,20 +8,23 @@ import { Breadcrumbs } from "./components/Breadcrumbs";
 import { Cart } from "./Cart";
 import { ProductCard } from "./ProductCard";
 import { Footer } from "./components/Footer";
-import { Subscribe } from "./components/Subscribe";
 
 function App() {
+  const [goods, setGoods] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedColor, setSelectedColor] = useState(null);
-  const [filteredGoods, setFilteredGoods] = useState(goods);
   const [favoriteList, setFavoriteList] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const filterCatalog = (e) => {
-    setSelectedColor(e);
-    setFilteredGoods(
-      goods.filter((el) => el.colors.some((color) => color === e))
-    );
-  };
+  useEffect(() => {
+    setLoading(true);
+    fetch("http://localhost:3000/goods")
+      .then((response) => response.json())
+      .then((result) => {
+        setLoading(false);
+        setGoods(result);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <>
@@ -41,8 +43,7 @@ function App() {
               setSearchQuery={setSearchQuery}
               favoriteList={favoriteList}
               setFavoriteList={setFavoriteList}
-              filterCatalog={filterCatalog}
-              filteredGoods={filteredGoods}
+              goods={goods}
             />
           }
         />

@@ -1,7 +1,7 @@
 import { Card } from "./Card";
 
 export const Catalog = ({
-  filteredGoods,
+  goods,
   searchQuery,
   favoriteList,
   setFavoriteList,
@@ -12,7 +12,7 @@ export const Catalog = ({
         <div className="flex justify-between items-baseline mb-4">
           <h1 className="font-[Satoshi-Bold] text-[32px]">Casual</h1>
           <div className="flex gap-3">
-            <p>Showing 1-10 of {filteredGoods.length} Products</p>
+            <p>Showing 1-10 of {goods.length} Products</p>
             <p>
               Sort by:
               <span className="font-[Satoshi-Medium]">Most Popular</span>
@@ -21,10 +21,10 @@ export const Catalog = ({
         </div>
         <div className="flex flex-wrap gap-x-5 gap-y-9 self-end">
           {(searchQuery
-            ? filteredGoods.filter((el) =>
-                el.category.toLowerCase().includes(searchQuery.toLowerCase())
+            ? goods.filter((el) =>
+                el.title.toLowerCase().includes(searchQuery.toLowerCase())
               )
-            : filteredGoods
+            : goods
           ).map((el) => (
             <Card
               key={el.id}

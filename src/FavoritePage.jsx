@@ -9,7 +9,7 @@ export const FavoritePage = ({ favoriteList, setFavoriteList, goods }) => {
           Your Favorites
         </h2>
         <div className="flex gap-5 justify-between">
-          <Filters />
+          <Filters goods={goods}/>
           <div className="w-full flex flex-wrap gap-x-5 gap-y-9 self-start">
             {favoriteList.length ? (
               goods
