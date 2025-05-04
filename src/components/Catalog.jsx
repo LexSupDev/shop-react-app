@@ -2,7 +2,6 @@ import { Card } from "./Card";
 
 export const Catalog = ({
   goods,
-  searchQuery,
   favoriteList,
   setFavoriteList,
 }) => {
@@ -19,18 +18,14 @@ export const Catalog = ({
             </p>
           </div>
         </div>
-        <div className="flex flex-wrap gap-x-5 gap-y-9 self-end">
-          {(searchQuery
-            ? goods.filter((el) =>
-                el.title.toLowerCase().includes(searchQuery.toLowerCase())
-              )
-            : goods
-          ).map((el) => (
+        <div className="flex flex-wrap gap-x-5 gap-y-9">
+          {goods.map((el) => (
             <Card
               key={el.id}
               id={el.id}
               image={el.image}
               title={el.title}
+              category={el.category}
               stars={el.stars}
               price={el.price}
               favoriteList={favoriteList}

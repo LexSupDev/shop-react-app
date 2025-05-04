@@ -5,6 +5,7 @@ export const Card = ({
   id,
   image,
   title,
+  category,
   stars,
   price,
   favoriteList,
@@ -20,6 +21,7 @@ export const Card = ({
         />
         <div className="relative">
           <h3 className="font-[Satoshi-Bold] text-xl mb-2">{title}</h3>
+          <p className="opacity-60 pb-1.5">{category}</p>
           <FavoriteIcon
             favoriteList={favoriteList}
             setFavoriteList={setFavoriteList}

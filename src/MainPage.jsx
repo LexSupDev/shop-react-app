@@ -2,18 +2,17 @@ import { Filters } from "./components/Filters";
 import { Catalog } from "./components/Catalog";
 
 export const MainPage = ({
-  searchQuery,
   favoriteList,
   setFavoriteList,
-  goods,
+  setSelectedCategory,
+  goods
 }) => {
   return (
     <>
       <div className="wrap flex gap-5 justify-between">
-        <Filters goods={goods} />
+        <Filters goods={goods} setSelectedCategory={setSelectedCategory}/>
         <Catalog
           goods={goods}
-          searchQuery={searchQuery}
           favoriteList={favoriteList}
           setFavoriteList={setFavoriteList}
         />

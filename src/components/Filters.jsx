@@ -1,8 +1,9 @@
 import filter from "/src/assets/filter.png";
 import RangeSlider from "./RangeSlider";
 
-export const Filters = ({ filterCatalog, goods }) => {
+export const Filters = ({ filterCatalog, setSelectedCategory, goods }) => {
   const categories = [...new Set(goods.map((el) => el.category))];
+  console.log(categories)
   const colors = [...new Set(goods.flatMap((el) => el.colors))];
   const sizeOrder = [
     "XX-Small",
@@ -37,7 +38,7 @@ export const Filters = ({ filterCatalog, goods }) => {
                     "relative block after:absolute after:content-['.'] after:text-transparent after:block after:w-[12px] after:bg-[url('/src/assets/arrow-right.png')] after:bg-no-repeat after:right-0 after:top-1.5"
                   }
                   href={`#${el.toLowerCase().replace(" ", "-")}`}
-                  onClick={() => filterCatalog(el)}
+                  onClick={() => setSelectedCategory(el)}
                 >
                   {el}
                 </a>
