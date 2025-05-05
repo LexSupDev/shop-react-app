@@ -1,10 +1,9 @@
 import filter from "/src/assets/filter.png";
 import RangeSlider from "./RangeSlider";
 
-export const Filters = ({ filterCatalog, setSelectedCategory, goods }) => {
-  const categories = [...new Set(goods.map((el) => el.category))];
-  console.log(categories)
-  const colors = [...new Set(goods.flatMap((el) => el.colors))];
+export const Filters = ({ filterCatalog, setSelectedCategory, productList }) => {
+  const categories = [...new Set(productList.map((el) => el.category))];
+  const colors = [...new Set(productList.flatMap((el) => el.colors))];
   const sizeOrder = [
     "XX-Small",
     "X-Small",
@@ -16,7 +15,7 @@ export const Filters = ({ filterCatalog, setSelectedCategory, goods }) => {
     "3X-Large",
     "4X-Large",
   ];
-  const size = [...new Set(goods.flatMap((el) => el.size))].sort(
+  const size = [...new Set(productList.flatMap((el) => el.size))].sort(
     (a, b) => sizeOrder.indexOf(a) - sizeOrder.indexOf(b)
   );
   const style = ["Casual", "Formal", "Party", "Gym"];

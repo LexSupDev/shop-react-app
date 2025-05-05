@@ -2,15 +2,11 @@ import { FavoriteIcon } from "./FavoriteIcon";
 import { StarRating } from "./StarRating";
 
 export const Card = ({
-  id,
-  image,
-  title,
-  category,
-  stars,
-  price,
+  product,
   favoriteList,
   setFavoriteList,
 }) => {
+  const {image, title, id, stars, price, category} = product
   return (
     <>
       <div className="flex flex-col">
@@ -26,6 +22,7 @@ export const Card = ({
             favoriteList={favoriteList}
             setFavoriteList={setFavoriteList}
             id={id}
+            product={product}
           />
         </div>
         <div className="mb-2 flex flex-row gap-3 items-start">

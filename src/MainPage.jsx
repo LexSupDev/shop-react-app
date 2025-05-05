@@ -5,12 +5,13 @@ export const MainPage = ({
   favoriteList,
   setFavoriteList,
   setSelectedCategory,
-  goods
+  goods,
+  productList
 }) => {
   return (
     <>
       <div className="wrap flex gap-5 justify-between">
-        <Filters goods={goods} setSelectedCategory={setSelectedCategory}/>
+        <Filters productList={productList} setSelectedCategory={setSelectedCategory}/>
         <Catalog
           goods={goods}
           favoriteList={favoriteList}

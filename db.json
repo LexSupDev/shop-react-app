@@ -616,5 +616,7 @@
       "colors": ["#000000"],
       "size": ["4X-Large", "Small", "3X-Large", "X-Small"]
     }
-  ]
+  ],
+
+  "favorites": []
 }

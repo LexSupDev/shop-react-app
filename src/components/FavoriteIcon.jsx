@@ -1,19 +1,30 @@
-export const FavoriteIcon = ({ favoriteList, setFavoriteList, id }) => {
-  const handleFavorites = (id) => {
-    favoriteList.includes(id)
-      ? setFavoriteList([...favoriteList.filter((el) => el !== id)])
-      : setFavoriteList([...favoriteList, id]);
+export const FavoriteIcon = ({
+  favoriteList,
+  setFavoriteList,
+  id,
+  product,
+}) => {
+  const handleFavorites = (product) => {
+    fetch(`http://localhost:3000/favorites`, {
+      method: "POST",
+      body: JSON.stringify(product),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   };
 
   return (
     <>
       <span
         className="absolute top-0.5 right-0"
-        onClick={() => handleFavorites(id)}
+        onClick={() => handleFavorites(product)}
       >
         <svg
           className={`w-6 h-6 text-gray-800 dark:text-white ${
-            favoriteList.includes(id) ? "fill-red-700" : "stroke-black hover:fill-gray-400"
+            favoriteList.includes(id)
+              ? "fill-red-700"
+              : "stroke-black hover:fill-gray-400"
           }`}
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"

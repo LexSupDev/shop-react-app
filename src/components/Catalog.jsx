@@ -19,15 +19,10 @@ export const Catalog = ({
           </div>
         </div>
         <div className="flex flex-wrap gap-x-5 gap-y-9">
-          {goods.map((el) => (
+          {goods.map((product) => (
             <Card
-              key={el.id}
-              id={el.id}
-              image={el.image}
-              title={el.title}
-              category={el.category}
-              stars={el.stars}
-              price={el.price}
+              key={product.id}
+              product={product}
               favoriteList={favoriteList}
               setFavoriteList={setFavoriteList}
             />

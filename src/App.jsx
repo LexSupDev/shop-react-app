@@ -14,18 +14,29 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [favoriteList, setFavoriteList] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [productList, setProductList] = useState([]);
 
   useEffect(() => {
-    setLoading(true);
-    fetch(`http://localhost:3000/goods?q=${searchQuery}&category_like=${selectedCategory}`)
+    fetch(
+      `http://localhost:3000/goods?q=${searchQuery}&category_like=${selectedCategory}`
+    )
       .then((response) => response.json())
       .then((result) => {
-        setLoading(false);
         setGoods(result);
       })
       .catch((error) => console.log(error));
   }, [searchQuery, selectedCategory]);
+
+  useEffect(() => {
+    fetch(
+      `http://localhost:3000/goods`
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        setProductList(result);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <>
@@ -35,32 +46,33 @@ function App() {
         favoriteList={favoriteList}
       />
       <Breadcrumbs />
-        <Routes>
-          <Route
-            path="/shop-react-app/"
-            element={
-              <MainPage
-                setSearchQuery={setSearchQuery}
-                favoriteList={favoriteList}
-                setFavoriteList={setFavoriteList}
-                goods={goods}
-                setSelectedCategory={setSelectedCategory}
-              />
-            }
-          />
-          <Route
-            path="/shop-react-app/favorite"
-            element={
-              <FavoritePage
-                favoriteList={favoriteList}
-                setFavoriteList={setFavoriteList}
-                goods={goods}
-              />
-            }
-          />
-          <Route path="/shop-react-app/cart" element={<Cart />} />
-          <Route path="/shop-react-app/product" element={<ProductCard />} />
-        </Routes>
+      <Routes>
+        <Route
+          path="/shop-react-app/"
+          element={
+            <MainPage
+              setSearchQuery={setSearchQuery}
+              favoriteList={favoriteList}
+              setFavoriteList={setFavoriteList}
+              goods={goods}
+              productList={productList}
+              setSelectedCategory={setSelectedCategory}
+            />
+          }
+        />
+        <Route
+          path="/shop-react-app/favorite"
+          element={
+            <FavoritePage
+              favoriteList={favoriteList}
+              setFavoriteList={setFavoriteList}
+              productList={productList}
+            />
+          }
+        />
+        <Route path="/shop-react-app/cart" element={<Cart />} />
+        <Route path="/shop-react-app/product" element={<ProductCard />} />
+      </Routes>
       <Footer />
     </>
   );

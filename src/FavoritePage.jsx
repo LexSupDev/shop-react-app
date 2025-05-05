@@ -1,7 +1,7 @@
 import { Card } from "./components/Card";
 import { Filters } from "./components/Filters";
 
-export const FavoritePage = ({ favoriteList, setFavoriteList, goods }) => {
+export const FavoritePage = ({ favoriteList, setFavoriteList, productList }) => {
   return (
     <>
       <div className="wrap">
@@ -9,10 +9,10 @@ export const FavoritePage = ({ favoriteList, setFavoriteList, goods }) => {
           Your Favorites
         </h2>
         <div className="flex gap-5 justify-between">
-          <Filters goods={goods}/>
+          <Filters productList={productList}/>
           <div className="w-full flex flex-wrap gap-x-5 gap-y-9 self-start">
             {favoriteList.length ? (
-              goods
+              productList
                 .filter((el) => favoriteList.includes(el.id))
                 .map((el) => (
                   <Card
