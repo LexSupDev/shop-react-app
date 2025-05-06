@@ -3,7 +3,6 @@ import { Catalog } from "./components/Catalog";
 
 export const MainPage = ({
   favoriteList,
-  setFavoriteList,
   setSelectedCategory,
   goods,
   productList
@@ -15,7 +14,6 @@ export const MainPage = ({
         <Catalog
           goods={goods}
           favoriteList={favoriteList}
-          setFavoriteList={setFavoriteList}
         />
       </div>
     </>

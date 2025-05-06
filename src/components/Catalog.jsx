@@ -3,7 +3,6 @@ import { Card } from "./Card";
 export const Catalog = ({
   goods,
   favoriteList,
-  setFavoriteList,
 }) => {
   return (
     <>
@@ -24,7 +23,6 @@ export const Catalog = ({
               key={product.id}
               product={product}
               favoriteList={favoriteList}
-              setFavoriteList={setFavoriteList}
             />
           ))}
         </div>

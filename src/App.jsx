@@ -38,6 +38,17 @@ function App() {
       .catch((error) => console.log(error));
   }, []);
 
+  useEffect(() => {
+    fetch(
+      `http://localhost:3000/favorites`
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        setFavoriteList(result);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
   return (
     <>
       <Header
@@ -53,7 +64,6 @@ function App() {
             <MainPage
               setSearchQuery={setSearchQuery}
               favoriteList={favoriteList}
-              setFavoriteList={setFavoriteList}
               goods={goods}
               productList={productList}
               setSelectedCategory={setSelectedCategory}
@@ -65,7 +75,6 @@ function App() {
           element={
             <FavoritePage
               favoriteList={favoriteList}
-              setFavoriteList={setFavoriteList}
               productList={productList}
             />
           }

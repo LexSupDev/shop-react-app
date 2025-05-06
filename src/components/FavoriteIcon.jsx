@@ -1,12 +1,7 @@
-export const FavoriteIcon = ({
-  favoriteList,
-  setFavoriteList,
-  id,
-  product,
-}) => {
+export const FavoriteIcon = ({ favoriteList, product }) => {
   const handleFavorites = (product) => {
     fetch(`http://localhost:3000/favorites`, {
-      method: "POST",
+      method: favoriteList.flatMap((el) => el.id).includes(product.id) ? "DELETE" : "POST",
       body: JSON.stringify(product),
       headers: {
         "Content-Type": "application/json",
@@ -22,7 +17,7 @@ export const FavoriteIcon = ({
       >
         <svg
           className={`w-6 h-6 text-gray-800 dark:text-white ${
-            favoriteList.includes(id)
+            favoriteList.flatMap((el) => el.id).includes(product.id)
               ? "fill-red-700"
               : "stroke-black hover:fill-gray-400"
           }`}
