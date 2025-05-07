@@ -1017,48 +1017,5 @@
       ]
     }
   ],
-  "favorites": [
-    {
-      "id": "07fcd671-bb0a-440b-b588-5526dc38deaa",
-      "image": "src/assets/t-shirt-1.jpg",
-      "title": "Gradient Graphic T-shirt",
-      "stars": 3.5,
-      "price": 145,
-      "category": "T-Shirts",
-      "colors": [
-        "#FFC0CB",
-        "#FFFFFF"
-      ],
-      "size": [
-        "Large",
-        "X-Large",
-        "X-Small",
-        "4X-Large",
-        "Medium",
-        "2X-Large",
-        "Small"
-      ]
-    },
-    {
-      "id": "efa139ee-e06b-47fa-ba77-affc667f84bd",
-      "image": "src/assets/t-shirt-2.jpg",
-      "title": "Polo with Tipping Details",
-      "stars": 4.5,
-      "price": 180,
-      "category": "T-Shirts",
-      "colors": [
-        "#FFC0CB",
-        "#FFFFFF"
-      ],
-      "size": [
-        "Large",
-        "X-Large",
-        "X-Small",
-        "4X-Large",
-        "Medium",
-        "2X-Large",
-        "Small"
-      ]
-    }
-  ]
+  "favorites": []
 }

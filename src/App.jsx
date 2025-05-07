@@ -8,12 +8,12 @@ import { Breadcrumbs } from "./components/Breadcrumbs";
 import { Cart } from "./Cart";
 import { ProductCard } from "./ProductCard";
 import { Footer } from "./components/Footer";
+import { useFavoriteStore } from "./components/FavoriteStore";
 
 function App() {
   const [goods, setGoods] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [favoriteList, setFavoriteList] = useState([]);
   const [productList, setProductList] = useState([]);
 
   useEffect(() => {
@@ -28,9 +28,7 @@ function App() {
   }, [searchQuery, selectedCategory]);
 
   useEffect(() => {
-    fetch(
-      `http://localhost:3000/goods`
-    )
+    fetch(`http://localhost:3000/goods`)
       .then((response) => response.json())
       .then((result) => {
         setProductList(result);
@@ -38,23 +36,17 @@ function App() {
       .catch((error) => console.log(error));
   }, []);
 
+  const fetchFav = useFavoriteStore.getState().fetch
   useEffect(() => {
-    fetch(
-      `http://localhost:3000/favorites`
-    )
-      .then((response) => response.json())
-      .then((result) => {
-        setFavoriteList(result);
-      })
-      .catch((error) => console.log(error));
+    fetchFav()
   }, []);
+
 
   return (
     <>
       <Header
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
-        favoriteList={favoriteList}
       />
       <Breadcrumbs />
       <Routes>
@@ -63,7 +55,6 @@ function App() {
           element={
             <MainPage
               setSearchQuery={setSearchQuery}
-              favoriteList={favoriteList}
               goods={goods}
               productList={productList}
               setSelectedCategory={setSelectedCategory}
@@ -74,7 +65,6 @@ function App() {
           path="/shop-react-app/favorite"
           element={
             <FavoritePage
-              favoriteList={favoriteList}
               productList={productList}
             />
           }

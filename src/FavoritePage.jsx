@@ -1,10 +1,16 @@
 import { Card } from "./components/Card";
 import { Filters } from "./components/Filters";
+import { useFavoriteStore } from "./components/FavoriteStore";
+import { useEffect } from "react";
 
-export const FavoritePage = ({
-  favoriteList,
-  productList,
-}) => {
+
+export const FavoritePage = ({ productList, setFavoriteList }) => {
+    
+
+
+  
+  const favoriteList = useFavoriteStore.getState().favoriteList
+  
   return (
     <>
       <div className="wrap">
@@ -20,6 +26,7 @@ export const FavoritePage = ({
                   key={product.id}
                   product={product}
                   favoriteList={favoriteList}
+                  setFavoriteList={setFavoriteList}
                 />
               ))
             ) : (
@@ -27,11 +34,10 @@ export const FavoritePage = ({
                 No Favorits goods yet
               </div>
             )}
-
-            {/* <Card/> */}
           </div>
         </div>
       </div>
+      {console.log(favoriteList)}
     </>
   );
 };

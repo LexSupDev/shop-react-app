@@ -1,12 +1,16 @@
-export const FavoriteIcon = ({ favoriteList, product }) => {
+export const FavoriteIcon = ({ favoriteList, product, getFavorits }) => {
   const handleFavorites = (product) => {
-    fetch(`http://localhost:3000/favorites`, {
-      method: favoriteList.flatMap((el) => el.id).includes(product.id) ? "DELETE" : "POST",
-      body: JSON.stringify(product),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    favoriteList.some((el) => el.id === product.id)
+      ? fetch(`http://localhost:3000/favorites/${product.id}`, {
+          method: "DELETE",
+        }).then(() => getFavorits())
+      : fetch(`http://localhost:3000/favorites`, {
+          method: "POST",
+          body: JSON.stringify(product),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }).then(() => getFavorits());
   };
 
   return (

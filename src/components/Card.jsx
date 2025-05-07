@@ -4,6 +4,7 @@ import { StarRating } from "./StarRating";
 export const Card = ({
   product,
   favoriteList,
+  getFavorits
 }) => {
   const {image, title, stars, price, category} = product
   return (
@@ -20,6 +21,7 @@ export const Card = ({
           <FavoriteIcon
             favoriteList={favoriteList}
             product={product}
+            getFavorits={getFavorits}
           />
         </div>
         <div className="mb-2 flex flex-row gap-3 items-start">
