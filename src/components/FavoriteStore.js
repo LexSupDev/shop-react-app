@@ -5,28 +5,52 @@ export const useFavoriteStore = create((set, get) => ({
 
   fetch: async () => {
     const response = await fetch("http://localhost:3000/favorites");
-    set({ favoriteList: await response.json() });
+    const data = await response.json();
+    set({ favoriteList: data });
   },
 
-  addFavoriteItem: (item) => {
-    fetch(`http://localhost:3000/favorites`, {
-      method: "POST",
-      body: JSON.stringify(item),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then(get().fetch());
+  addFavoriteItem: async (item) => {
+    // обновим UI сразу
+    set((state) => ({
+      favoriteList: [...state.favoriteList, item],
+    }));
+
+    try {
+      await fetch(`http://localhost:3000/favorites`, {
+        method: "POST",
+        body: JSON.stringify(item),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    } catch (error) {
+      console.error("Failed to add favorite:", error);
+      // откатим изменения, если запрос неудачный
+      get().fetch();
+    }
   },
 
-  deleteFavoriteItem: (item) => {
-    fetch(`http://localhost:3000/favorites/${item.id}`, {
-      method: "DELETE",
-    }).then(get().fetch());
+  deleteFavoriteItem: async (item) => {
+    set((state) => ({
+      favoriteList: state.favoriteList.filter((el) => el.id !== item.id),
+    }));
+
+    try {
+      await fetch(`http://localhost:3000/favorites/${item.id}`, {
+        method: "DELETE",
+      });
+    } catch (error) {
+      console.error("Failed to delete favorite:", error);
+      get().fetch();
+    }
   },
 
-  handleFavorites: (item) => {
-    get().favoriteList.some((el) => el.id === item.id)
-      ? get().deleteFavoriteItem(item)
-      : get().addFavoriteItem(item);
+  handleFavorites: async (item) => {
+    const isFavorite = get().favoriteList.some((el) => el.id === item.id);
+    if (isFavorite) {
+      await get().deleteFavoriteItem(item);
+    } else {
+      await get().addFavoriteItem(item);
+    }
   },
 }));

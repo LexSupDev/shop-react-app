@@ -1,8 +1,10 @@
 import { useFavoriteStore } from "./FavoriteStore";
 
-export const FavoriteIcon = ({ product}) => {
-  const favoriteList = useFavoriteStore.getState().favoriteList
-  const handleFavorites = useFavoriteStore.getState().handleFavorites
+export const FavoriteIcon = ({ product }) => {
+  const favoriteList = useFavoriteStore((state) => state.favoriteList);
+  const handleFavorites = useFavoriteStore((state) => state.handleFavorites);
+
+  const isFavorite = favoriteList.some((el) => el.id === product.id);
 
   return (
     <>
@@ -12,9 +14,7 @@ export const FavoriteIcon = ({ product}) => {
       >
         <svg
           className={`w-6 h-6 text-gray-800 dark:text-white ${
-            favoriteList.flatMap((el) => el.id).includes(product.id)
-              ? "fill-red-700"
-              : "stroke-black hover:fill-gray-400"
+            isFavorite ? "fill-red-700" : "stroke-black hover:fill-gray-400"
           }`}
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"

@@ -2,11 +2,9 @@ import { Card } from "./components/Card";
 import { Filters } from "./components/Filters";
 import { useFavoriteStore } from "./components/FavoriteStore";
 
+export const FavoritePage = () => {
+  const favoriteList = useFavoriteStore((state) => state.favoriteList);
 
-export const FavoritePage = ({ productList}) => {
-  
-  const favoriteList = useFavoriteStore.getState().favoriteList
-  
   return (
     <>
       <div className="wrap">
@@ -14,14 +12,11 @@ export const FavoritePage = ({ productList}) => {
           Your Favorites
         </h2>
         <div className="flex gap-5 justify-between">
-          <Filters productList={productList} />
+          <Filters />
           <div className="w-full flex flex-wrap gap-x-5 gap-y-9 self-start">
             {favoriteList.length ? (
               favoriteList.map((product) => (
-                <Card
-                  key={product.id}
-                  product={product}
-                />
+                <Card key={product.id} product={product} />
               ))
             ) : (
               <div className="uppercase text-3xl font-[Satoshi-Bold]">

@@ -3,7 +3,7 @@ import RangeSlider from "./RangeSlider";
 import { useGoodsStore } from "./GoodsStore";
 
 export const Filters = ({ setSelectedCategory }) => {
-  const goodsList = useGoodsStore.getState().goodsList
+  const goodsList = useGoodsStore(state => state.goodsList)
   const categories = [...new Set(goodsList.map((el) => el.category))];
   const colors = [...new Set(goodsList.flatMap((el) => el.colors))];
   const sizeOrder = [

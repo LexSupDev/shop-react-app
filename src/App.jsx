@@ -12,10 +12,8 @@ import { useFavoriteStore } from "./components/FavoriteStore";
 import { useGoodsStore } from "./components/GoodsStore";
 
 function App() {
-  const [goods, setGoods] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [productList, setProductList] = useState([]);
 
   useEffect(() => {
     fetch(
@@ -23,19 +21,17 @@ function App() {
     )
       .then((response) => response.json())
       .then((result) => {
-        setGoods(result);
+        //setGoods(result);
       })
       .catch((error) => console.log(error));
   }, [searchQuery, selectedCategory]);
 
-  const fetchGoods = useGoodsStore.getState().fetch;
   useEffect(() => {
-    fetchGoods();
+    useGoodsStore.getState().fetch();
   }, []);
 
-  const fetchFav = useFavoriteStore.getState().fetch;
   useEffect(() => {
-    fetchFav();
+    useFavoriteStore.getState().fetch();
   }, []);
 
   return (
@@ -47,16 +43,13 @@ function App() {
           path="/shop-react-app/"
           element={
             <MainPage
-              setSearchQuery={setSearchQuery}
-              goods={goods}
-              productList={productList}
               setSelectedCategory={setSelectedCategory}
             />
           }
         />
         <Route
           path="/shop-react-app/favorite"
-          element={<FavoritePage productList={productList} />}
+          element={<FavoritePage />}
         />
         <Route path="/shop-react-app/cart" element={<Cart />} />
         <Route path="/shop-react-app/product" element={<ProductCard />} />

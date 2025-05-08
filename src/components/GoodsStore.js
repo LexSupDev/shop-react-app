@@ -4,7 +4,8 @@ export const useGoodsStore = create((set, get) => ({
   goodsList: [],
 
   fetch: async () => {
-    const response = await fetch("http://localhost:3000/goods")
-    set({ favoriteList: await response.json() })
+    const response = await fetch("http://localhost:3000/goods");
+    const data = await response.json();
+    set({ goodsList: data });
   },
 }));
