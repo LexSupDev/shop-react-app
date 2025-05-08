@@ -2,9 +2,7 @@ import { FavoriteIcon } from "./FavoriteIcon";
 import { StarRating } from "./StarRating";
 
 export const Card = ({
-  product,
-  favoriteList,
-  getFavorits
+  product
 }) => {
   const {image, title, stars, price, category} = product
   return (
@@ -19,9 +17,7 @@ export const Card = ({
           <h3 className="font-[Satoshi-Bold] text-xl mb-2">{title}</h3>
           <p className="opacity-60 pb-1.5">{category}</p>
           <FavoriteIcon
-            favoriteList={favoriteList}
             product={product}
-            getFavorits={getFavorits}
           />
         </div>
         <div className="mb-2 flex flex-row gap-3 items-start">

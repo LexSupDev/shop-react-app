@@ -4,10 +4,11 @@ import cart from "/src/assets/cart.png";
 import logo from "/src/assets/logo.png";
 import { Search } from "./Search";
 import { Link, NavLink } from "react-router";
+import { useFavoriteStore } from "./FavoriteStore";
 
 const navMenu = ["Shop", "On sale", "New arrival", "Brands"];
 
-export const Header = ({ searchQuery, setSearchQuery, favoriteList }) => {
+export const Header = ({ searchQuery, setSearchQuery }) => {
   return (
     <>
       <PromoLine />
@@ -32,7 +33,7 @@ export const Header = ({ searchQuery, setSearchQuery, favoriteList }) => {
           <div className="flex gap-3.5">
             <Link to={"/shop-react-app/favorite"}>
               <svg
-                className={`w-6 h-6 text-gray-800 dark:text-white ${favoriteList.length ? "fill-red-700" : "stroke-black hover:fill-gray-400"}`}
+                className={`w-6 h-6 text-gray-800 dark:text-white ${useFavoriteStore.getState().favoriteList.length ? "fill-red-700" : "stroke-black hover:fill-gray-400"}`}
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

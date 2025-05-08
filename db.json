@@ -1017,5 +1017,45 @@
       ]
     }
   ],
-  "favorites": []
+  "favorites": [
+    {
+      "id": "38fa49ef-d29e-4318-938a-b3e5eaaefcc2",
+      "image": "https://placeholdmon.vercel.app/295x295?text=Denim+Jacket",
+      "title": "Denim Jacket",
+      "stars": 3,
+      "price": 67.88,
+      "category": "Pants",
+      "colors": [
+        "#0000FF"
+      ],
+      "size": [
+        "Large",
+        "3X-Large",
+        "X-Small",
+        "4X-Large"
+      ]
+    },
+    {
+      "id": "b5bc3da6-7550-4010-9719-709bc57969f7",
+      "image": "https://placeholdmon.vercel.app/295x295?text=Hooded+Sweatshirt",
+      "title": "Hooded Sweatshirt",
+      "stars": 1.5,
+      "price": 27.86,
+      "category": "Tops",
+      "colors": [
+        "#FF0000",
+        "#000000",
+        "#FFFF00",
+        "#A52A2A"
+      ],
+      "size": [
+        "2X-Large",
+        "3X-Large",
+        "X-Large",
+        "Large",
+        "Small",
+        "4X-Large"
+      ]
+    }
+  ]
 }

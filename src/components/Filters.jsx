@@ -1,9 +1,11 @@
 import filter from "/src/assets/filter.png";
 import RangeSlider from "./RangeSlider";
+import { useGoodsStore } from "./GoodsStore";
 
-export const Filters = ({ filterCatalog, setSelectedCategory, productList }) => {
-  const categories = [...new Set(productList.map((el) => el.category))];
-  const colors = [...new Set(productList.flatMap((el) => el.colors))];
+export const Filters = ({ setSelectedCategory }) => {
+  const goodsList = useGoodsStore.getState().goodsList
+  const categories = [...new Set(goodsList.map((el) => el.category))];
+  const colors = [...new Set(goodsList.flatMap((el) => el.colors))];
   const sizeOrder = [
     "XX-Small",
     "X-Small",
@@ -15,7 +17,7 @@ export const Filters = ({ filterCatalog, setSelectedCategory, productList }) => 
     "3X-Large",
     "4X-Large",
   ];
-  const size = [...new Set(productList.flatMap((el) => el.size))].sort(
+  const size = [...new Set(goodsList.flatMap((el) => el.size))].sort(
     (a, b) => sizeOrder.indexOf(a) - sizeOrder.indexOf(b)
   );
   const style = ["Casual", "Formal", "Party", "Gym"];
@@ -61,7 +63,6 @@ export const Filters = ({ filterCatalog, setSelectedCategory, productList }) => 
                 <input
                   type="checkbox"
                   defaultValue={el}
-                  onClick={() => filterCatalog(el)}
                   className="hidden"
                 />
               </label>

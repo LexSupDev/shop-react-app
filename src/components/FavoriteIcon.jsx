@@ -1,17 +1,8 @@
-export const FavoriteIcon = ({ favoriteList, product, getFavorits }) => {
-  const handleFavorites = (product) => {
-    favoriteList.some((el) => el.id === product.id)
-      ? fetch(`http://localhost:3000/favorites/${product.id}`, {
-          method: "DELETE",
-        }).then(() => getFavorits())
-      : fetch(`http://localhost:3000/favorites`, {
-          method: "POST",
-          body: JSON.stringify(product),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }).then(() => getFavorits());
-  };
+import { useFavoriteStore } from "./FavoriteStore";
+
+export const FavoriteIcon = ({ product}) => {
+  const favoriteList = useFavoriteStore.getState().favoriteList
+  const handleFavorites = useFavoriteStore.getState().handleFavorites
 
   return (
     <>
