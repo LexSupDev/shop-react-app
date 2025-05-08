@@ -2,7 +2,7 @@ import filter from "/src/assets/filter.png";
 import RangeSlider from "./RangeSlider";
 import { useGoodsStore } from "./GoodsStore";
 
-export const Filters = ({ setSelectedCategory }) => {
+export const Filters = () => {
   const goodsList = useGoodsStore(state => state.goodsList)
   const categories = [...new Set(goodsList.map((el) => el.category))];
   const colors = [...new Set(goodsList.flatMap((el) => el.colors))];
@@ -39,7 +39,7 @@ export const Filters = ({ setSelectedCategory }) => {
                     "relative block after:absolute after:content-['.'] after:text-transparent after:block after:w-[12px] after:bg-[url('/src/assets/arrow-right.png')] after:bg-no-repeat after:right-0 after:top-1.5"
                   }
                   href={`#${el.toLowerCase().replace(" ", "-")}`}
-                  onClick={() => setSelectedCategory(el)}
+                  onClick={() => (el)}
                 >
                   {el}
                 </a>

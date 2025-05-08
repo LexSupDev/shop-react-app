@@ -6,4 +6,9 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   base: "/shop-react-app/",
   plugins: [react(), tailwindcss()],
+  server: {
+    watch: {
+      ignored: ['**/db.json']
+    }
+  },
 });

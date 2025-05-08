@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-export const useGoodsStore = create((set, get) => ({
+export const useGoodsStore = create((set) => ({
   goodsList: [],
 
   fetch: async () => {

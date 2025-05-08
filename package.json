@@ -5,7 +5,8 @@
   "type": "module",
   "homepage": "http://lexsupdev.github.io/shop-react-app",
   "scripts": {
-    "dev": "concurrently \"json-server --watch db.json\" \"vite\"",
+    "server": "json-server --watch db.json",
+    "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
