@@ -1,6 +1,6 @@
-import { Card } from "./components/Card";
-import { Filters } from "./components/Filters";
-import { useFavoriteStore } from "./components/FavoriteStore";
+import { Card } from "../Card";
+import { Filters } from "../Filters";
+import { useFavoriteStore } from "../Store/FavoriteStore";
 
 export const FavoritePage = () => {
   const favoriteList = useFavoriteStore((state) => state.favoriteList);

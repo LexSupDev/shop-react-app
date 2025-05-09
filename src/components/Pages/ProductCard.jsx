@@ -1,5 +1,5 @@
-import { PieceCounter } from "./components/PieceCounter";
-import { StarRating } from "./components/StarRating";
+import { PieceCounter } from "../PieceCounter";
+import { StarRating } from "../StarRating";
 
 export const ProductCard = () => {
   return (

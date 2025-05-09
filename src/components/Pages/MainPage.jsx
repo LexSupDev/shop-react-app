@@ -1,5 +1,5 @@
-import { Filters } from "./components/Filters";
-import { Catalog } from "./components/Catalog";
+import { Filters } from "../Filters";
+import { Catalog } from "../Catalog";
 
 export const MainPage = () => {
   return (

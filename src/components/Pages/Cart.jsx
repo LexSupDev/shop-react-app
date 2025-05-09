@@ -1,4 +1,4 @@
-import { PieceCounter } from "./components/PieceCounter";
+import { PieceCounter } from "../PieceCounter";
 import trash from "/src/assets/trash.svg";
 
 export const Cart = () => {

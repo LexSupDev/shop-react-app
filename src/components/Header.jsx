@@ -4,11 +4,10 @@ import cart from "/src/assets/cart.png";
 import logo from "/src/assets/logo.png";
 import { Search } from "./Search";
 import { Link, NavLink } from "react-router";
-import { useFavoriteStore } from "./FavoriteStore";
+import { useFavoriteStore } from "./Store/FavoriteStore";
 
-const navMenu = ["Shop", "On sale", "New arrival", "Brands"];
-
-export const Header = ({ searchQuery, setSearchQuery }) => {
+export const Header = () => {
+  const navMenu = ["Shop", "On sale", "New arrival", "Brands"];
   const favoriteCount = useFavoriteStore((state) => state.favoriteList.length);
 
   return (
@@ -22,6 +21,7 @@ export const Header = ({ searchQuery, setSearchQuery }) => {
           <nav className="flex gap-3">
             {navMenu.map((el) => (
               <NavLink
+                key={el}
                 to={`/shop-react-app/${el.toLowerCase().replace(" ", "-")}`}
                 className={({ isActive }) =>
                   isActive ? "text-white bg-black rounded-xl p-2" : "p-2"
@@ -31,11 +31,15 @@ export const Header = ({ searchQuery, setSearchQuery }) => {
               </NavLink>
             ))}
           </nav>
-          <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+          <Search />
           <div className="flex gap-3.5">
             <Link to={"/shop-react-app/favorite"}>
               <svg
-                className={`w-6 h-6 text-gray-800 dark:text-white ${favoriteCount ? "fill-red-700" : "stroke-black hover:fill-gray-400"}`}
+                className={`w-6 h-6 text-gray-800 dark:text-white ${
+                  favoriteCount
+                    ? "fill-red-700"
+                    : "stroke-black hover:fill-gray-400"
+                }`}
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -52,10 +56,10 @@ export const Header = ({ searchQuery, setSearchQuery }) => {
               </svg>
             </Link>
             <Link to={"/shop-react-app/cart"} className="">
-              <img src={cart} alt="Trash" className=""/>
+              <img src={cart} alt="Trash" className="" />
             </Link>
             <Link to={"/shop-react-app/auth"}>
-              <img src={avatar} alt="Avatar"/>
+              <img src={avatar} alt="Avatar" />
             </Link>
           </div>
         </header>

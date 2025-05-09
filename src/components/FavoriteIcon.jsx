@@ -1,4 +1,4 @@
-import { useFavoriteStore } from "./FavoriteStore";
+import { useFavoriteStore } from "./Store/FavoriteStore";
 
 export const FavoriteIcon = ({ product }) => {
   const favoriteList = useFavoriteStore((state) => state.favoriteList);
