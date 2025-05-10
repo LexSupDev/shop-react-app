@@ -17,10 +17,11 @@ function App() {
   const searchQuery = useFiltersStore(state => state.searchQuery)
   const selectedCategory =useFiltersStore(state => state.selectedCategory)
   const updateFilteredList = useFiltersStore(state => state.updateFilteredList)
+  const selectedPrice = useFiltersStore(state => state.selectedPrice)
 
   useEffect(() => {
     updateFilteredList()
-  }, [searchQuery, selectedCategory]);
+  }, [searchQuery, selectedCategory, selectedPrice]);
 
   useEffect(() => {
     useGoodsStore.getState().fetch();

@@ -1,16 +1,19 @@
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
+import { useFiltersStore } from "./Store/FiltersStore";
 
 export const RangeSlider = () => {
   const min = 0;
   const max = 1000;
   const step = 10;
 
-  const [minVal, setMinVal] = useState(200);
-  const [maxVal, setMaxVal] = useState(800);
+  const selectedPrice = useFiltersStore((state) => state.selectedPrice);
+  const minVal = selectedPrice.min;
+  const maxVal = selectedPrice.max;
 
   const minValRef = useRef(null);
   const maxValRef = useRef(null);
   const range = useRef(null);
+  //const inputMin = useRef(minVal)
 
   // Получаем % положения значения
   const getPercent = (value) => Math.round(((value - min) / (max - min)) * 100);
@@ -51,7 +54,9 @@ export const RangeSlider = () => {
             ref={minValRef}
             onChange={(e) => {
               const value = Math.min(Number(e.target.value), maxVal - step);
-              setMinVal(value);
+              useFiltersStore.setState((state) => ({
+                selectedPrice: { ...state.selectedPrice, min: value },
+              }));
             }}
             className="absolute w-full h-10 appearance-none bg-transparent pointer-events-none
             [&::-webkit-slider-thumb]:appearance-none
@@ -82,7 +87,9 @@ export const RangeSlider = () => {
             ref={maxValRef}
             onChange={(e) => {
               const value = Math.max(Number(e.target.value), minVal + step);
-              setMaxVal(value);
+              useFiltersStore.setState((state) => ({
+                selectedPrice: { ...state.selectedPrice, max: value },
+              }));
             }}
             className="absolute w-full h-10 appearance-none bg-transparent pointer-events-none rounded-full
             [&::-webkit-slider-thumb]:appearance-none
@@ -103,9 +110,23 @@ export const RangeSlider = () => {
           "
           />
         </div>
-        <div className="flex justify-between text-sm font-semibold mb-2 text-gray-700">
-          <span>{minVal}</span>
-          <span>{maxVal}</span>
+        <div className="relative flex justify-between text-sm font-semibold mb-2 text-gray-700">
+          <input
+            type="range"
+            min={min}
+            max={max}
+            step={step}
+            //value={minVal}
+            className={`w-fit`}
+          />
+          {/* <input
+            type="text"
+            min={min}
+            max={max}
+            step={step}
+            value={minVal}
+            className={`w-fit absolute block left-[calc(${maxVal}px/5.5)]`}
+          /> */}
         </div>
       </div>
     </>
