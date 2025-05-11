@@ -3,8 +3,9 @@ import { useFiltersStore } from "./Store/FiltersStore";
 
 export const RangeSlider = () => {
   const min = 0;
-  const max = 1000;
+  const max = 300;
   const step = 10;
+  const ratio = 1000/max
 
   const selectedPrice = useFiltersStore((state) => state.selectedPrice);
   const minVal = selectedPrice.min;
@@ -111,22 +112,18 @@ export const RangeSlider = () => {
           />
         </div>
         <div className="relative flex justify-between text-sm font-semibold mb-2 text-gray-700">
-          <input
-            type="range"
-            min={min}
-            max={max}
-            step={step}
-            //value={minVal}
-            className={`w-fit`}
-          />
-          {/* <input
-            type="text"
-            min={min}
-            max={max}
-            step={step}
-            value={minVal}
-            className={`w-fit absolute block left-[calc(${maxVal}px/5.5)]`}
-          /> */}
+          <span
+            className={`w-[50px] absolute block`}
+            style={{ left: minVal / ratio + "%" }}
+          >
+            ${minVal}
+          </span>
+          <span
+            className={"w-[50px] absolute block"}
+            style={{ left: maxVal / ratio + "%" }}
+          >
+            ${maxVal}
+          </span>
         </div>
       </div>
     </>

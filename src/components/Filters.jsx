@@ -7,6 +7,8 @@ export const Filters = () => {
   const goodsList = useGoodsStore((state) => state.goodsList);
   const filteredList = useFiltersStore((state) => state.filteredList);
   const selectedCategory = useFiltersStore((state) => state.selectedCategory);
+  const handleColor = useFiltersStore(state => state.handleColor)
+  const handleSize = useFiltersStore(state => state.handleSize)
 
   const categories = [...new Set(goodsList.map((el) => el.category))];
   const colors = [...new Set(filteredList.flatMap((el) => el.colors))];
@@ -25,6 +27,7 @@ export const Filters = () => {
     (a, b) => sizeOrder.indexOf(a) - sizeOrder.indexOf(b)
   );
   const style = ["Casual", "Formal", "Party", "Gym"];
+
   return (
     <>
       <div className="sm:max-w-[295px] sm:min-w-[295px] border rounded-2xl border-gray-200 p-6 self-start">
@@ -67,7 +70,8 @@ export const Filters = () => {
                 className="rounded-[100%] w-[37px] h-[37px] border border-black/10 hasChecked-after hasChecked-before has-[:checked]:after:w-[13px] has-[:checked]:after:bg-[url('/src/assets/check.svg')] has-[:checked]:after:bg-no-repeat has-[:checked]:after:right-[11px] has-[:checked]:after:top-[13px] has-[:checked]:before:bg-black/10 has-[:checked]:before:w-full has-[:checked]:before:h-full has-[:checked]:before:rounded-full"
                 /*{`$//selectedColor === el ? "border-black" : "border-transparent"}`}*/
               >
-                <input type="checkbox" defaultValue={el} className="hidden" />
+                
+                <input type="checkbox" onClick={() => handleColor(el)} className="hidden" />
               </label>
             ))}
           </div>
@@ -81,7 +85,7 @@ export const Filters = () => {
                 className="text-sm rounded-4xl px-5 py-2.5 bg-gray-100 has-[:checked]:bg-black has-[:checked]:text-white"
               >
                 {el}
-                <input type="checkbox" className="hidden" />
+                <input type="checkbox" onClick={() => handleSize(el)} className="hidden" />
               </label>
             ))}
           </div>
@@ -98,9 +102,6 @@ export const Filters = () => {
             ))}
           </ul>
         </div>
-        <button className="py-3.5 bg-black text-white w-full rounded-4xl text-sm mb-2">
-          Apply Filter
-        </button>
       </div>
     </>
   );
