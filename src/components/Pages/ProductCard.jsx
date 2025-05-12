@@ -5,19 +5,15 @@ import { useEffect } from "react";
 
 export const ProductCard = () => {
   const { id } = useParams();
-console.log(id)
-const product = useProductCardStore((state) => state.product);
 
   useEffect(() => {
-    console.log('useEffect')
     useProductCardStore.getState().fetch(id);
   }, [id]);
+  
+  //const product = ;
+  const { title, stars, price, category, colors, size } = useProductCardStore((state) => state.product);
 
-
-  const { title, stars, price, category, colors, size } = product;
-  console.log(product)
-
-
+  //console.log(product);
 
   return (
     <>
@@ -48,11 +44,12 @@ const product = useProductCardStore((state) => state.product);
           <div className="">
             <div className="pb-5 border-b-1 border-gray-200 mt-5 first:mt-0 last:border-none last:pb-0">
               <h3 className="font-[Integral-CF-Bold] text-[39px]">{title}</h3>
-              <div className="my-2 flex flex-row gap-3 items-start">
+              <div className="my-2 flex flex-row gap-3 items-center">
                 <StarRating rating={stars} />
                 <span className="text-sm">
-                  {5}/<span className="opacity-50">5</span>
+                  {stars}/<span className="opacity-50">5</span>
                 </span>
+                <span className="opacity-60">{category}</span>
               </div>
               <p className="font-[Satoshi-Bold] text-[32px] mb-2">{price}</p>
               <p className="opacity-60">
@@ -64,11 +61,10 @@ const product = useProductCardStore((state) => state.product);
             <div className="pb-5 border-b-1 border-gray-200 mt-5 first:mt-0 last:border-none last:pb-0">
               <p className="opacity-60 mb-4">Select Colors</p>
               <div className="flex gap-4">
-                {console.log(colors)}
-                {colors.map((el) => (
+                {colors?.map((el) => (
                   <label
                     style={{ background: el }}
-                    className="rounded-full w-[37px] h-[37px] hasChecked-after hasChecked-before has-[:checked]:after:w-[13px] has-[:checked]:after:bg-[url('/src/assets/check.svg')] has-[:checked]:after:bg-no-repeat has-[:checked]:after:right-[11px] has-[:checked]:after:top-[13px] has-[:checked]:before:bg-black/10 has-[:checked]:before:w-full has-[:checked]:before:h-full has-[:checked]:before:rounded-full"
+                    className="rounded-full w-[37px] h-[37px] border border-black/10 hasChecked-after hasChecked-before has-[:checked]:after:w-[13px] has-[:checked]:after:bg-[url('/src/assets/check.svg')] has-[:checked]:after:bg-no-repeat has-[:checked]:after:right-[11px] has-[:checked]:after:top-[13px] has-[:checked]:before:bg-black/10 has-[:checked]:before:w-full has-[:checked]:before:h-full has-[:checked]:before:rounded-full"
                   >
                     <input type="checkbox" className="hidden" />
                   </label>
@@ -77,23 +73,13 @@ const product = useProductCardStore((state) => state.product);
             </div>
             <div className="pb-5 border-b-1 border-gray-200 mt-5 first:mt-0 last:border-none last:pb-0">
               <p className="opacity-60 mb-4">Choose Size</p>
-              <div className="flex gap-4">
-                <label className="text-sm rounded-4xl px-5 py-2.5 bg-gray-100 has-[:checked]:bg-black has-[:checked]:text-white">
-                  Small
-                  <input type="checkbox" className="hidden" />
-                </label>
-                <label className="text-sm rounded-4xl px-5 py-2.5 bg-gray-100 has-[:checked]:bg-black has-[:checked]:text-white">
-                  Medium
-                  <input type="checkbox" className="hidden" />
-                </label>
-                <label className="text-sm rounded-4xl px-5 py-2.5 bg-gray-100 has-[:checked]:bg-black has-[:checked]:text-white">
-                  Large
-                  <input type="checkbox" className="hidden" />
-                </label>
-                <label className="text-sm rounded-4xl px-5 py-2.5 bg-gray-100 has-[:checked]:bg-black has-[:checked]:text-white">
-                  X-Large
-                  <input type="checkbox" className="hidden" />
-                </label>
+              <div className="flex gap-4 flex-wrap">
+                {size?.map((el) => (
+                  <label className="text-sm rounded-4xl px-5 py-2.5 bg-gray-100 has-[:checked]:bg-black has-[:checked]:text-white">
+                    {el}
+                    <input type="checkbox" className="hidden" />
+                  </label>
+                ))}
               </div>
             </div>
             <div className="pb-5 border-b-1 border-gray-200 mt-5 first:mt-0 last:border-none last:pb-0 flex gap-5">

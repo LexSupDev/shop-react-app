@@ -1017,5 +1017,27 @@
       ]
     }
   ],
-  "favorites": []
+  "favorites": [
+    {
+      "id": "9d7560a6-78be-4e2d-bdc6-86cafe9c09d8",
+      "image": "https://placeholdmon.vercel.app/295x295?text=Black+Skinny+Jeans",
+      "title": "Black Skinny Jeans",
+      "stars": 2.5,
+      "price": 101.88,
+      "category": "Tops",
+      "colors": [
+        "#008000",
+        "#FFC0CB",
+        "#FF0000",
+        "#FFFF00"
+      ],
+      "size": [
+        "Medium",
+        "Large",
+        "X-Small",
+        "Small",
+        "X-Large"
+      ]
+    }
+  ]
 }

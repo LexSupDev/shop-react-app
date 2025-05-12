@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 
-export const useProductCardStore = create((set, get) => ({
+export const useProductCardStore = create((set) => ({
   product: [],
 
   fetch: async (id) => {
