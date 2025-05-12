@@ -39,7 +39,7 @@ function App() {
         <Route path="/shop-react-app/" element={<MainPage />} />
         <Route path="/shop-react-app/favorite" element={<FavoritePage />} />
         <Route path="/shop-react-app/cart" element={<Cart />} />
-        <Route path="/shop-react-app/product" element={<ProductCard />} />
+        <Route path="/shop-react-app/product/:id" element={<ProductCard />} />
       </Routes>
       <Footer />
     </>

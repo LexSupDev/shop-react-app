@@ -1,7 +1,24 @@
-import { PieceCounter } from "../PieceCounter";
+import { useParams } from "react-router";
 import { StarRating } from "../StarRating";
+import { useProductCardStore } from "../Store/ProductCardStore";
+import { useEffect } from "react";
 
 export const ProductCard = () => {
+  const { id } = useParams();
+console.log(id)
+const product = useProductCardStore((state) => state.product);
+
+  useEffect(() => {
+    console.log('useEffect')
+    useProductCardStore.getState().fetch(id);
+  }, [id]);
+
+
+  const { title, stars, price, category, colors, size } = product;
+  console.log(product)
+
+
+
   return (
     <>
       <div className="wrap">
@@ -30,16 +47,14 @@ export const ProductCard = () => {
           </div>
           <div className="">
             <div className="pb-5 border-b-1 border-gray-200 mt-5 first:mt-0 last:border-none last:pb-0">
-              <h3 className="font-[Integral-CF-Bold] text-[39px]">
-                One Life Graphic T-shirt
-              </h3>
+              <h3 className="font-[Integral-CF-Bold] text-[39px]">{title}</h3>
               <div className="my-2 flex flex-row gap-3 items-start">
-                <StarRating rating={5} />
+                <StarRating rating={stars} />
                 <span className="text-sm">
                   {5}/<span className="opacity-50">5</span>
                 </span>
               </div>
-              <p className="font-[Satoshi-Bold] text-[32px] mb-2">$260</p>
+              <p className="font-[Satoshi-Bold] text-[32px] mb-2">{price}</p>
               <p className="opacity-60">
                 This graphic t-shirt which is perfect for any occasion. Crafted
                 from a soft and breathable fabric, it offers superior comfort
@@ -49,15 +64,15 @@ export const ProductCard = () => {
             <div className="pb-5 border-b-1 border-gray-200 mt-5 first:mt-0 last:border-none last:pb-0">
               <p className="opacity-60 mb-4">Select Colors</p>
               <div className="flex gap-4">
-                <label className="rounded-full w-[37px] h-[37px] bg-amber-300 hasChecked-after hasChecked-before has-[:checked]:after:w-[13px] has-[:checked]:after:bg-[url('/src/assets/check.svg')] has-[:checked]:after:bg-no-repeat has-[:checked]:after:right-[11px] has-[:checked]:after:top-[13px] has-[:checked]:before:bg-black/10 has-[:checked]:before:w-full has-[:checked]:before:h-full has-[:checked]:before:rounded-full">
-                  <input type="checkbox" className="hidden" />
-                </label>
-                <label className="rounded-full w-[37px] h-[37px] bg-indigo-700 hasChecked-after hasChecked-before has-[:checked]:after:w-[13px] has-[:checked]:after:bg-[url('/src/assets/check.svg')] has-[:checked]:after:bg-no-repeat has-[:checked]:after:right-[11px] has-[:checked]:after:top-[13px] has-[:checked]:before:bg-black/10 has-[:checked]:before:w-full has-[:checked]:before:h-full has-[:checked]:before:rounded-full">
-                  <input type="checkbox" className="hidden" />
-                </label>
-                <label className="rounded-full w-[37px] h-[37px] bg-sky-600 hasChecked-after hasChecked-before has-[:checked]:after:w-[13px] has-[:checked]:after:bg-[url('/src/assets/check.svg')] has-[:checked]:after:bg-no-repeat has-[:checked]:after:right-[11px] has-[:checked]:after:top-[13px] has-[:checked]:before:bg-black/10 has-[:checked]:before:w-full has-[:checked]:before:h-full has-[:checked]:before:rounded-full">
-                  <input type="checkbox" className="hidden" />
-                </label>
+                {console.log(colors)}
+                {colors.map((el) => (
+                  <label
+                    style={{ background: el }}
+                    className="rounded-full w-[37px] h-[37px] hasChecked-after hasChecked-before has-[:checked]:after:w-[13px] has-[:checked]:after:bg-[url('/src/assets/check.svg')] has-[:checked]:after:bg-no-repeat has-[:checked]:after:right-[11px] has-[:checked]:after:top-[13px] has-[:checked]:before:bg-black/10 has-[:checked]:before:w-full has-[:checked]:before:h-full has-[:checked]:before:rounded-full"
+                  >
+                    <input type="checkbox" className="hidden" />
+                  </label>
+                ))}
               </div>
             </div>
             <div className="pb-5 border-b-1 border-gray-200 mt-5 first:mt-0 last:border-none last:pb-0">
