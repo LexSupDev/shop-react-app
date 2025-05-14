@@ -11,6 +11,7 @@ import { Footer } from "./components/Footer";
 import { useFavoriteStore } from "./components/Store/FavoriteStore";
 import { useGoodsStore } from "./components/Store/GoodsStore";
 import { useFiltersStore } from "./components/Store/FiltersStore";
+import { useCartStore } from "./components/Store/CartStore";
 
 function App() {
 
@@ -25,9 +26,7 @@ function App() {
 
   useEffect(() => {
     useGoodsStore.getState().fetch();
-  }, []);
-
-  useEffect(() => {
+    useCartStore.getState().fetch();
     useFavoriteStore.getState().fetch();
   }, []);
 

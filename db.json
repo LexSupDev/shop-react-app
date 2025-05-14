@@ -1017,27 +1017,29 @@
       ]
     }
   ],
-  "favorites": [
+  "favorites": [],
+  "cart": [
     {
-      "id": "9d7560a6-78be-4e2d-bdc6-86cafe9c09d8",
-      "image": "https://placeholdmon.vercel.app/295x295?text=Black+Skinny+Jeans",
-      "title": "Black Skinny Jeans",
-      "stars": 2.5,
-      "price": 101.88,
-      "category": "Tops",
+      "id": "83f5480b-8053-4c46-8168-c56ba3053d2b",
+      "image": "https://placeholdmon.vercel.app/295x295?text=Classic+White+T-Shirt",
+      "title": "Classic White T-Shirt",
+      "stars": 3,
+      "price": 46.03,
+      "category": "Sweaters",
       "colors": [
-        "#008000",
         "#FFC0CB",
-        "#FF0000",
-        "#FFFF00"
+        "#FFFFFF"
       ],
       "size": [
-        "Medium",
         "Large",
+        "X-Large",
         "X-Small",
-        "Small",
-        "X-Large"
-      ]
+        "4X-Large",
+        "Medium",
+        "2X-Large",
+        "Small"
+      ],
+      "amount": 1
     }
   ]
 }

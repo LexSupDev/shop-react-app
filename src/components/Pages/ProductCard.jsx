@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import { StarRating } from "../StarRating";
 import { useProductCardStore } from "../Store/ProductCardStore";
+import { useCartStore } from "../Store/CartStore";
 import { useEffect } from "react";
 
 export const ProductCard = () => {
@@ -9,11 +10,9 @@ export const ProductCard = () => {
   useEffect(() => {
     useProductCardStore.getState().fetch(id);
   }, [id]);
-  
-  //const product = ;
-  const { title, stars, price, category, colors, size } = useProductCardStore((state) => state.product);
 
-  //console.log(product);
+  const product = useProductCardStore((state) => state.product);
+  const { title, stars, price, category, colors, size } = product;
 
   return (
     <>
@@ -92,7 +91,10 @@ export const ProductCard = () => {
                   +
                 </button>
               </div>
-              <button className="m-auto bg-black text-white font-[Satoshi-Medium] w-full rounded-full py-[14px] cursor-pointer">
+              <button
+                onClick={() => useCartStore.getState().addCartItem(product)}
+                className="m-auto bg-black text-white font-[Satoshi-Medium] w-full rounded-full py-[14px] cursor-pointer"
+              >
                 Add to Cart
               </button>
             </div>
