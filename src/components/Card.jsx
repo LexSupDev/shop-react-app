@@ -20,7 +20,7 @@ export const Card = ({ product }) => {
           <FavoriteIcon product={product} />
         </div>
         <div className="mb-2 flex flex-row gap-3 items-start">
-          <StarRating rating={stars} />
+          <StarRating id={id} rating={stars} />
           <span className="text-sm">
             {stars}/<span className="opacity-50">5</span>
           </span>

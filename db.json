@@ -43,7 +43,7 @@
       ]
     },
     {
-      "id": "efa139ee-e06b-47fa-ba77-affc667f84bd",
+      "id": "60146fd7-520d-45e2-8a5f-000a7ca300e4",
       "image": "src/assets/item-3.jpg",
       "title": "Polo with Tipping Details",
       "stars": 4.5,
@@ -64,7 +64,7 @@
       ]
     },
     {
-      "id": "efa139ee-e06b-47fa-ba77-affc667f84bd",
+      "id": "05bd5109-94f2-400d-b734-a1c2f89b5b7b",
       "image": "src/assets/item-4.jpg",
       "title": "Polo with Tipping Details",
       "stars": 4.5,
@@ -85,7 +85,7 @@
       ]
     },
     {
-      "id": "efa139ee-e06b-47fa-ba77-affc667f84bd",
+      "id": "a3cd85fc-589e-4e3f-b160-d22c88a3c65d",
       "image": "src/assets/item-5.jpg",
       "title": "Polo with Tipping Details",
       "stars": 4.5,
@@ -106,7 +106,7 @@
       ]
     },
     {
-      "id": "efa139ee-e06b-47fa-ba77-affc667f84bd",
+      "id": "3c1773b6-7b06-4098-826e-5874cf6a9628",
       "image": "src/assets/item-6.jpg",
       "title": "Polo with Tipping Details",
       "stars": 4.5,
@@ -127,7 +127,7 @@
       ]
     },
     {
-      "id": "efa139ee-e06b-47fa-ba77-affc667f84bd",
+      "id": "77cdf429-a55a-49cd-89af-98f13d467d1d",
       "image": "src/assets/item-7.jpg",
       "title": "Polo with Tipping Details",
       "stars": 4.5,
@@ -148,7 +148,7 @@
       ]
     },
     {
-      "id": "efa139ee-e06b-47fa-ba77-affc667f84bd",
+      "id": "2b9ec1f2-a26b-432c-839a-32be302fd9bb",
       "image": "src/assets/item-8.jpg",
       "title": "Polo with Tipping Details",
       "stars": 4.5,
@@ -169,7 +169,7 @@
       ]
     },
     {
-      "id": "efa139ee-e06b-47fa-ba77-affc667f84bd",
+      "id": "d9534b2d-20ab-4b3f-9a23-59ffa2593642",
       "image": "src/assets/item-9.jpg",
       "title": "Polo with Tipping Details",
       "stars": 4.5,
@@ -215,7 +215,30 @@
       "amount": 1,
       "selectedColor": "",
       "selectedSize": ""
+    },
+    {
+      "id": "07fcd671-bb0a-440b-b588-5526dc38deaa",
+      "image": "src/assets/item-1.jpg",
+      "title": "Gradient Graphic T-shirt",
+      "stars": 3.5,
+      "price": 145,
+      "category": "T-Shirts",
+      "colors": [
+        "#FFC0CB",
+        "#FFFFFF"
+      ],
+      "size": [
+        "Large",
+        "X-Large",
+        "X-Small",
+        "4X-Large",
+        "Medium",
+        "2X-Large",
+        "Small"
+      ],
+      "amount": 1,
+      "selectedColor": "",
+      "selectedSize": ""
     }
-  ],
-  "order": []
+  ]
 }

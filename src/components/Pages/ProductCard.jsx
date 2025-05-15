@@ -3,6 +3,7 @@ import { StarRating } from "../StarRating";
 import { useProductCardStore } from "../Store/ProductCardStore";
 import { useCartStore } from "../Store/CartStore";
 import { useEffect } from "react";
+import { PieceCounter } from "../PieceCounter";
 
 export const ProductCard = () => {
   const { id } = useParams();
@@ -62,7 +63,7 @@ export const ProductCard = () => {
               <div className="flex gap-4">
                 {colors?.map((el) => (
                   <label
-                    onClick={() => useCartStore.setState({selectedColor: el})}
+                    onClick={() => useCartStore.setState({ selectedColor: el })}
                     style={{ background: el }}
                     className="rounded-full w-[37px] h-[37px] border border-black/10 hasChecked-after hasChecked-before has-[:checked]:after:w-[13px] has-[:checked]:after:bg-[url('/src/assets/check.svg')] has-[:checked]:after:bg-no-repeat has-[:checked]:after:right-[11px] has-[:checked]:after:top-[13px] has-[:checked]:before:bg-black/10 has-[:checked]:before:w-full has-[:checked]:before:h-full has-[:checked]:before:rounded-full"
                   >
@@ -75,7 +76,10 @@ export const ProductCard = () => {
               <p className="opacity-60 mb-4">Choose Size</p>
               <div className="flex gap-4 flex-wrap">
                 {size?.map((el) => (
-                  <label onClick={() => useCartStore.setState({selectedSize: el})} className="text-sm rounded-4xl px-5 py-2.5 bg-gray-100 has-[:checked]:bg-black has-[:checked]:text-white">
+                  <label
+                    onClick={() => useCartStore.setState({ selectedSize: el })}
+                    className="text-sm rounded-4xl px-5 py-2.5 bg-gray-100 has-[:checked]:bg-black has-[:checked]:text-white"
+                  >
                     {el}
                     <input type="checkbox" className="hidden" />
                   </label>
@@ -83,15 +87,7 @@ export const ProductCard = () => {
               </div>
             </div>
             <div className="pb-5 border-b-1 border-gray-200 mt-5 first:mt-0 last:border-none last:pb-0 flex gap-5">
-              <div className="flex items-center bg-gray-100 rounded-4xl">
-                <button className="pl-[22px] pr-10 text-3xl cursor-pointer">
-                  -
-                </button>
-                <span className="mt-1 text-xl px-1">1</span>
-                <button className="pl-10 pr-[22px] text-3xl cursor-pointer">
-                  +
-                </button>
-              </div>
+              <PieceCounter id={id}/>
               <button
                 onClick={() => useCartStore.getState().addCartItem(product)}
                 className="m-auto bg-black text-white font-[Satoshi-Medium] w-full rounded-full py-[14px] cursor-pointer"

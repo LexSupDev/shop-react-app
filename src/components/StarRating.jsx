@@ -1,4 +1,4 @@
-export const StarRating = ({ rating }) => {
+export const StarRating = ({rating }) => {
   const fullStar = (
     <svg
       width="19"
