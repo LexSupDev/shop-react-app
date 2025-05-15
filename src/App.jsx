@@ -5,7 +5,7 @@ import { MainPage } from "./components/Pages/MainPage";
 import { FavoritePage } from "./components/Pages/FavoritePage";
 import { Header } from "./components/Header";
 import { Breadcrumbs } from "./components/Breadcrumbs";
-import { Cart } from "./components/Pages/Cart";
+import { Cart } from "./components/Pages/CartPage";
 import { ProductCard } from "./components/Pages/ProductCard";
 import { Footer } from "./components/Footer";
 import { useFavoriteStore } from "./components/Store/FavoriteStore";

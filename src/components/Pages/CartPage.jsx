@@ -1,10 +1,13 @@
 import { PieceCounter } from "../PieceCounter";
 import trash from "/src/assets/trash.svg";
-import { useEffect } from "react";
 import { useCartStore } from "../Store/CartStore";
 
 export const Cart = () => {
   const cartStore = useCartStore((state) => state.cart);
+  let subTotalPrice = 0;
+  const deliveryFee = 15;
+  cartStore.map((item) => (subTotalPrice += item.price));
+  const totalPrice = subTotalPrice + deliveryFee;
 
   return (
     <>
@@ -19,7 +22,11 @@ export const Cart = () => {
                 key={cartItem.id}
                 className="flex flex-row border-b-1 border-gray-200 last:border-none last:pb-0 pb-6 mt-6 first:mt-0 gap-4"
               >
-                <img src={cartItem.image} alt="" className="w-31 h-31 rounded-xl" />
+                <img
+                  src={cartItem.image}
+                  alt=""
+                  className="w-31 h-31 rounded-xl"
+                />
                 <div className="flex justify-between w-full">
                   <div className="flex flex-col justify-between">
                     <h3 className="text-xl font-[Satoshi-Bold]">
@@ -27,10 +34,16 @@ export const Cart = () => {
                     </h3>
                     <div className="mt-[-20px]">
                       <p className="text-sm">
-                        Size: <span className="text-gray-400">Large</span>
+                        Size:{" "}
+                        <span className="text-gray-400">
+                          {cartItem.selectedSize}
+                        </span>
                       </p>
                       <p className="text-sm">
-                        Color: <span className="text-gray-400">White</span>
+                        Color:{" "}
+                        <span className="text-gray-400">
+                          {cartItem.selectedColor}
+                        </span>
                       </p>
                     </div>
                     <span className="text-2xl font-[Satoshi-Bold]">
@@ -38,7 +51,13 @@ export const Cart = () => {
                     </span>
                   </div>
                   <div className="flex flex-col items-end justify-between ">
-                    <img src={trash} onClick={() => {useCartStore.getState().deleteCartItem(cartItem.id)}} alt="Delete product from cart" />
+                    <img
+                      src={trash}
+                      onClick={() => {
+                        useCartStore.getState().deleteCartItem(cartItem.id);
+                      }}
+                      alt="Delete product from cart"
+                    />
                     <PieceCounter />
                   </div>
                 </div>
@@ -51,7 +70,7 @@ export const Cart = () => {
               <div className="flex flex-col gap-4 pb-4 border-b-1 border-gray-200 mb-4">
                 <div className="flex justify-between">
                   <p className="opacity-60 ">Subtotal</p>
-                  <span className="font-[Satoshi-Bold]">$565</span>
+                  <span className="font-[Satoshi-Bold]">${subTotalPrice}</span>
                 </div>
                 <div className="flex justify-between">
                   <p className="opacity-60">Discount (-20%)</p>
@@ -61,12 +80,14 @@ export const Cart = () => {
                 </div>
                 <div className="flex justify-between">
                   <p className="opacity-60 ">Delivery Fee</p>
-                  <span className="font-[Satoshi-Bold]">$15</span>
+                  <span className="font-[Satoshi-Bold]">${deliveryFee}</span>
                 </div>
               </div>
               <div className="flex justify-between">
                 <p>Total</p>
-                <span className="text-2xl font-[Satoshi-Bold]">$467</span>
+                <span className="text-2xl font-[Satoshi-Bold]">
+                  ${totalPrice}
+                </span>
               </div>
             </div>
             <div className="w-full flex justify-between gap-3">
@@ -81,7 +102,7 @@ export const Cart = () => {
                 Apply
               </button>
             </div>
-            <button className="w-full bg-black rounded-full py-4.5 dark:text-white relative before:absolute before:w-6 before:h-6 before:block before:bg-[url('src/assets/arrow-full-right.png')] before:bg-no-repeat before:top-[calc(50%-7px)] before:right-[30%]">
+            <button onClick={() => useCartStore.getState().resetCart()} className="w-full bg-black rounded-full py-4.5 dark:text-white relative before:absolute before:w-6 before:h-6 before:block before:bg-[url('src/assets/arrow-full-right.png')] before:bg-no-repeat before:top-[calc(50%-7px)] before:right-[30%]">
               Go to Checkout
             </button>
           </div>

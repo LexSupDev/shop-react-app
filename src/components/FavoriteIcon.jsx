@@ -14,7 +14,7 @@ export const FavoriteIcon = ({ product }) => {
       >
         <svg
           className={`w-6 h-6 text-gray-800 dark:text-white ${
-            isFavorite ? "fill-red-700" : "stroke-black hover:fill-gray-400"
+            isFavorite ? "fill-red-700 hover:fill-red-400" : "stroke-black hover:fill-gray-400"
           }`}
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"

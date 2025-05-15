@@ -62,6 +62,7 @@ export const ProductCard = () => {
               <div className="flex gap-4">
                 {colors?.map((el) => (
                   <label
+                    onClick={() => useCartStore.setState({selectedColor: el})}
                     style={{ background: el }}
                     className="rounded-full w-[37px] h-[37px] border border-black/10 hasChecked-after hasChecked-before has-[:checked]:after:w-[13px] has-[:checked]:after:bg-[url('/src/assets/check.svg')] has-[:checked]:after:bg-no-repeat has-[:checked]:after:right-[11px] has-[:checked]:after:top-[13px] has-[:checked]:before:bg-black/10 has-[:checked]:before:w-full has-[:checked]:before:h-full has-[:checked]:before:rounded-full"
                   >
@@ -74,7 +75,7 @@ export const ProductCard = () => {
               <p className="opacity-60 mb-4">Choose Size</p>
               <div className="flex gap-4 flex-wrap">
                 {size?.map((el) => (
-                  <label className="text-sm rounded-4xl px-5 py-2.5 bg-gray-100 has-[:checked]:bg-black has-[:checked]:text-white">
+                  <label onClick={() => useCartStore.setState({selectedSize: el})} className="text-sm rounded-4xl px-5 py-2.5 bg-gray-100 has-[:checked]:bg-black has-[:checked]:text-white">
                     {el}
                     <input type="checkbox" className="hidden" />
                   </label>

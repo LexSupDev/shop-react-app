@@ -2,8 +2,8 @@ import { create } from "zustand";
 
 export const useCartStore = create((set, get) => ({
   cart: [],
-  selectedColors: [],
-  selectedSizes: [],
+  selectedColor: "",
+  selectedSize: "",
 
   fetch: async () => {
     const response = await fetch(`http://localhost:3000/cart`);
@@ -12,7 +12,9 @@ export const useCartStore = create((set, get) => ({
   },
 
   addCartItem: async (item) => {
-    item.amount = 1
+    item.amount = 1;
+    item.selectedColor = get().selectedColor;
+    item.selectedSize = get().selectedSize;
     set((state) => ({
       cart: [...state.cart, item],
     }));
@@ -43,6 +45,19 @@ export const useCartStore = create((set, get) => ({
       });
     } catch (error) {
       console.error("Failed to delete in cart:", error);
+      get().fetch();
+    }
+  },
+
+  resetCart: async () => {
+    set({ cart: [] });
+
+    try {
+      await fetch("http://localhost:3000/cart", {
+        method: "DELETE",
+      });
+    } catch (error) {
+      console.erroe("Failed to delete in cart", error);
       get().fetch();
     }
   },
