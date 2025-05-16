@@ -2,8 +2,6 @@ import { create } from "zustand";
 
 export const useCartStore = create((set, get) => ({
   cart: [],
-  selectedColor: "",
-  selectedSize: "",
 
   fetch: async () => {
     const response = await fetch(`http://localhost:3000/cart`);
@@ -11,8 +9,8 @@ export const useCartStore = create((set, get) => ({
     set({ cart: data });
   },
 
-  addCartItem: async (item) => {
-    item.amount = 1;
+  addCartItem: async (item, amount) => {
+    item.amount = amount;
     item.selectedColor = get().selectedColor;
     item.selectedSize = get().selectedSize;
     set((state) => ({

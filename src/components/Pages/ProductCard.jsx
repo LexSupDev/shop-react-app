@@ -4,6 +4,7 @@ import { useProductCardStore } from "../Store/ProductCardStore";
 import { useCartStore } from "../Store/CartStore";
 import { useEffect } from "react";
 import { PieceCounter } from "../PieceCounter";
+import { usePieceCounterStore } from "../Store/PieceCounter";
 
 export const ProductCard = () => {
   const { id } = useParams();
@@ -14,6 +15,7 @@ export const ProductCard = () => {
 
   const product = useProductCardStore((state) => state.product);
   const { title, stars, price, category, colors, size } = product;
+  const count = usePieceCounterStore(state => state.count)
 
   return (
     <>
@@ -86,10 +88,10 @@ export const ProductCard = () => {
                 ))}
               </div>
             </div>
-            <div className="pb-5 border-b-1 border-gray-200 mt-5 first:mt-0 last:border-none last:pb-0 flex gap-5">
-              <PieceCounter id={id}/>
+            <div className="pb-5 border-b-1 border-gray-200 mt-5 first:mt-0 last:border-none last:pb-0 flex gap-5 justify-between">
+              <PieceCounter key={id} id={id}/>
               <button
-                onClick={() => useCartStore.getState().addCartItem(product)}
+                onClick={() => useCartStore.getState().addCartItem(product, count)}
                 className="m-auto bg-black text-white font-[Satoshi-Medium] w-full rounded-full py-[14px] cursor-pointer"
               >
                 Add to Cart

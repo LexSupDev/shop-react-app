@@ -58,7 +58,7 @@ export const Cart = () => {
                       }}
                       alt="Delete product from cart"
                     />
-                    <PieceCounter id={cartItem.id}/>
+                    <PieceCounter key={cartItem.id} id={cartItem.id}/>
                   </div>
                 </div>
               </div>

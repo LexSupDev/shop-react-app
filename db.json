@@ -212,16 +212,16 @@
         "2X-Large",
         "Small"
       ],
-      "amount": 1,
-      "selectedColor": "",
-      "selectedSize": ""
+      "amount": 7,
+      "selectedColor": "#FFFFFF",
+      "selectedSize": "Large"
     },
     {
-      "id": "07fcd671-bb0a-440b-b588-5526dc38deaa",
-      "image": "src/assets/item-1.jpg",
-      "title": "Gradient Graphic T-shirt",
-      "stars": 3.5,
-      "price": 145,
+      "id": "60146fd7-520d-45e2-8a5f-000a7ca300e4",
+      "image": "src/assets/item-3.jpg",
+      "title": "Polo with Tipping Details",
+      "stars": 4.5,
+      "price": 180,
       "category": "T-Shirts",
       "colors": [
         "#FFC0CB",
@@ -236,9 +236,33 @@
         "2X-Large",
         "Small"
       ],
-      "amount": 1,
-      "selectedColor": "",
-      "selectedSize": ""
+      "amount": 7,
+      "selectedColor": "#FFFFFF",
+      "selectedSize": "Large"
+    },
+    {
+      "id": "2b9ec1f2-a26b-432c-839a-32be302fd9bb",
+      "image": "src/assets/item-8.jpg",
+      "title": "Polo with Tipping Details",
+      "stars": 4.5,
+      "price": 180,
+      "category": "T-Shirts",
+      "colors": [
+        "#FFC0CB",
+        "#FFFFFF"
+      ],
+      "size": [
+        "Large",
+        "X-Large",
+        "X-Small",
+        "4X-Large",
+        "Medium",
+        "2X-Large",
+        "Small"
+      ],
+      "amount": 7,
+      "selectedColor": "#FFFFFF",
+      "selectedSize": "Small"
     }
   ]
 }
