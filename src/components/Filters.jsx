@@ -2,13 +2,22 @@ import filter from "/src/assets/filter.png";
 import RangeSlider from "./RangeSlider";
 import { useGoodsStore } from "./Store/GoodsStore";
 import { useFiltersStore } from "./Store/FiltersStore";
+import { useEffect } from "react";
 
 export const Filters = () => {
   const goodsList = useGoodsStore((state) => state.goodsList);
   const filteredList = useFiltersStore((state) => state.filteredList);
   const selectedCategory = useFiltersStore((state) => state.selectedCategory);
-  const handleColor = useFiltersStore(state => state.handleColor)
-  const handleSize = useFiltersStore(state => state.handleSize)
+  const handleColor = useFiltersStore((state) => state.handleColor);
+  const handleSize = useFiltersStore((state) => state.handleSize);
+
+  const searchQuery = useFiltersStore((state) => state.searchQuery);
+  const updateFilteredList = useFiltersStore((state) => state.updateFilteredList);
+  const selectedPrice = useFiltersStore((state) => state.selectedPrice);
+
+  useEffect(() => {
+    updateFilteredList();
+  }, [searchQuery, selectedCategory, selectedPrice]);
 
   const categories = [...new Set(goodsList.map((el) => el.category))];
   const colors = [...new Set(filteredList.flatMap((el) => el.colors))];
@@ -68,10 +77,13 @@ export const Filters = () => {
                 key={el}
                 style={{ backgroundColor: el }}
                 className="rounded-[100%] w-[37px] h-[37px] border border-black/10 hasChecked-after hasChecked-before has-[:checked]:after:w-[13px] has-[:checked]:after:bg-[url('/src/assets/check.svg')] has-[:checked]:after:bg-no-repeat has-[:checked]:after:right-[11px] has-[:checked]:after:top-[13px] has-[:checked]:before:bg-black/10 has-[:checked]:before:w-full has-[:checked]:before:h-full has-[:checked]:before:rounded-full"
-                /*{`$//selectedColor === el ? "border-black" : "border-transparent"}`}*/
               >
-                
-                <input type="checkbox" onClick={() => handleColor(el)} className="hidden" />
+                <input
+                  type="checkbox"
+                  name={el}
+                  onClick={() => handleColor(el)}
+                  className="hidden"
+                />
               </label>
             ))}
           </div>
@@ -85,7 +97,12 @@ export const Filters = () => {
                 className="text-sm rounded-4xl px-5 py-2.5 bg-gray-100 has-[:checked]:bg-black has-[:checked]:text-white"
               >
                 {el}
-                <input type="checkbox" onClick={() => handleSize(el)} className="hidden" />
+                <input
+                  type="checkbox"
+                  name={el}
+                  onClick={() => handleSize(el)}
+                  className="hidden"
+                />
               </label>
             ))}
           </div>

@@ -10,6 +10,7 @@ export const Subscribe = () => {
             <label className="relative before:absolute before:w-6 before:h-4 before:block before:bg-[url('src/assets/letter.svg')] before:bg-no-repeat before:top-4 before:left-4">
               <input
                 type="text"
+                name="Subscribe"
                 className="bg-white pl-[52px] py-3 rounded-full"
                 placeholder="Enter your email address"
               ></input>

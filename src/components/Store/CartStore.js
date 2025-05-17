@@ -2,34 +2,29 @@ import { create } from "zustand";
 
 export const useCartStore = create((set, get) => ({
   cart: [],
-  selectedColor: "",
-  selectedSize: "",
 
   fetch: async () => {
     const response = await fetch(`http://localhost:3000/cart`);
-    const data = await response.json();
-    set({ cart: data });
+    set({ cart: await response.json() });
   },
 
   addCartItem: async (item) => {
-    console.log(item)
+    console.log(item);
     set((state) => ({
       cart: [...state.cart, item],
     }));
 
-    try {
-      await fetch(`http://localhost:3000/cart`, {
-        method: "POST",
-        body: JSON.stringify(item),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-    } catch (error) {
+    fetch(`http://localhost:3000/cart`, {
+      method: "POST",
+      body: JSON.stringify(item),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).catch((error) => {
       console.error("Failed to add in cart:", error);
       // откатим изменения, если запрос неудачный
       get().fetch();
-    }
+    });
   },
 
   deleteCartItem: async (id) => {
@@ -58,5 +53,13 @@ export const useCartStore = create((set, get) => ({
       console.erroe("Failed to delete in cart", error);
       get().fetch();
     }
+  },
+
+  updateQuantity: (itemId, newQuantity) => {
+    set((state) => ({
+      cart: state.cart.map((item) =>
+        item.id === itemId ? { ...item, quantity: newQuantity } : item
+      ),
+    }));
   },
 }));

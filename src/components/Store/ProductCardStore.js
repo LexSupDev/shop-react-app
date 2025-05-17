@@ -3,6 +3,8 @@ import { create } from "zustand";
 
 export const useProductCardStore = create((set) => ({
   product: [],
+  selectedColor: "",
+  selectedSize: "",
 
   fetch: async (id) => {
     const response = await fetch(`http://localhost:3000/goods/${id}`);

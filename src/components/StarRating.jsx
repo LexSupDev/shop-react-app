@@ -1,4 +1,4 @@
-export const StarRating = ({rating }) => {
+export const StarRating = ({ rating }) => {
   const fullStar = (
     <svg
       width="19"
@@ -34,12 +34,12 @@ export const StarRating = ({rating }) => {
   const hasHalf = rating % 1 >= 0.5;
 
   for (let i = 0; i < fullCount; i++) {
-    stars.push(<span>{fullStar}</span>);
+    stars.push(<span key={`full-${i}`}>{fullStar}</span>);
   }
 
   if (hasHalf) {
-    stars.push(<span>{halfStar}</span>);
+    stars.push(<span key="half">{halfStar}</span>);
   }
 
-  return <div className="flex flex-row gap-1">{stars}</div>;
+  return <div className="flex flex-row gap-1 items-center">{stars}</div>;
 };

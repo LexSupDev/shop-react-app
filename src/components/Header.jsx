@@ -1,6 +1,5 @@
 import { PromoLine } from "./PromoLine";
 import avatar from "/src/assets/avatar.png";
-import cart from "/src/assets/cart.png";
 import logo from "/src/assets/logo.png";
 import { Search } from "./Search";
 import { Link, NavLink } from "react-router";
