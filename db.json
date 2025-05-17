@@ -193,76 +193,18 @@
   "favorites": [],
   "cart": [
     {
-      "id": "efa139ee-e06b-47fa-ba77-affc667f84bd",
-      "image": "src/assets/item-2.jpg",
-      "title": "Polo with Tipping Details",
-      "stars": 4.5,
-      "price": 180,
-      "category": "T-Shirts",
-      "colors": [
-        "#FFC0CB",
-        "#FFFFFF"
-      ],
-      "size": [
-        "Large",
-        "X-Large",
-        "X-Small",
-        "4X-Large",
-        "Medium",
-        "2X-Large",
-        "Small"
-      ],
-      "amount": 7,
-      "selectedColor": "#FFFFFF",
-      "selectedSize": "Large"
+      "ProductId": "a3cd85fc-589e-4e3f-b160-d22c88a3c65d",
+      "size": "Large",
+      "color": "#FFFFFF",
+      "amount": 5,
+      "id": 1
     },
     {
-      "id": "60146fd7-520d-45e2-8a5f-000a7ca300e4",
-      "image": "src/assets/item-3.jpg",
-      "title": "Polo with Tipping Details",
-      "stars": 4.5,
-      "price": 180,
-      "category": "T-Shirts",
-      "colors": [
-        "#FFC0CB",
-        "#FFFFFF"
-      ],
-      "size": [
-        "Large",
-        "X-Large",
-        "X-Small",
-        "4X-Large",
-        "Medium",
-        "2X-Large",
-        "Small"
-      ],
-      "amount": 7,
-      "selectedColor": "#FFFFFF",
-      "selectedSize": "Large"
-    },
-    {
-      "id": "2b9ec1f2-a26b-432c-839a-32be302fd9bb",
-      "image": "src/assets/item-8.jpg",
-      "title": "Polo with Tipping Details",
-      "stars": 4.5,
-      "price": 180,
-      "category": "T-Shirts",
-      "colors": [
-        "#FFC0CB",
-        "#FFFFFF"
-      ],
-      "size": [
-        "Large",
-        "X-Large",
-        "X-Small",
-        "4X-Large",
-        "Medium",
-        "2X-Large",
-        "Small"
-      ],
-      "amount": 7,
-      "selectedColor": "#FFFFFF",
-      "selectedSize": "Small"
+      "ProductId": "07fcd671-bb0a-440b-b588-5526dc38deaa",
+      "size": "Small",
+      "color": "#FFC0CB",
+      "amount": 1,
+      "id": 2
     }
   ]
 }
