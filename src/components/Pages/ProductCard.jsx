@@ -2,19 +2,18 @@ import { useParams } from "react-router";
 import { StarRating } from "../StarRating";
 import { useProductCardStore } from "../Store/ProductCardStore";
 import { useCartStore } from "../Store/CartStore";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { PieceCounter } from "../PieceCounter";
-//import { usePieceCounterStore } from "../Store/createCounterStore";
 
 export const ProductCard = () => {
+  const [count, setCount] = useState(1);
   const { id } = useParams();
 
   useEffect(() => {
     useProductCardStore.getState().fetch(id);
   }, [id]);
 
-  const product = useProductCardStore((state) => state.product);
-  const { title, stars, price, category, colors, size } = product;
+  const { title, stars, price, category, colors, size, image } = useProductCardStore(state => state.product);
 
   return (
     <>
@@ -37,8 +36,8 @@ export const ProductCard = () => {
               alt=""
             />
             <img
-              className="rounded-2xl last:row-span-3"
-              src="https://placeholdmon.vercel.app/444x530?text=Classic+White+T-Shirt"
+              className="rounded-2xl last:row-span-3 w-[444px] h-[530px]" 
+              src={`../${image}`}
               alt=""
             />
           </div>
@@ -102,14 +101,14 @@ export const ProductCard = () => {
               </div>
             </div>
             <div className="pb-5 border-b-1 border-gray-200 mt-5 first:mt-0 last:border-none last:pb-0 flex gap-5 justify-between">
-              <PieceCounter key={id} id={id} />
+            <PieceCounter count={count} onChange={setCount} />
               <button
                 onClick={() =>
                   useCartStore.getState().addCartItem({
                     goodsId: id,
                     size: useProductCardStore.getState().selectedSize,
                     color: useProductCardStore.getState().selectedColor,
-                    quantity: usePieceCounterStore.getState().count,
+                    quantity: count,
                   })
                 }
                 className="m-auto bg-black text-white font-[Satoshi-Medium] w-full rounded-full py-[14px] cursor-pointer"

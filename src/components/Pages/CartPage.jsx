@@ -1,13 +1,34 @@
 import { PieceCounter } from "../PieceCounter";
 import trash from "/src/assets/trash.svg";
 import { useCartStore } from "../Store/CartStore";
+import { useCartGoodsStore } from "../Store/CartGoodsStore";
+import { useEffect } from "react";
 
 export const Cart = () => {
-  const cartStore = useCartStore((state) => state.cart);
-  let subTotalPrice = 0;
-  const deliveryFee = 15;
-  cartStore.map((item) => (subTotalPrice += item.price));
-  const totalPrice = subTotalPrice + deliveryFee;
+  const { cart, updateQuantity } = useCartStore();
+  const { cartGoods, fetchByIds } = useCartGoodsStore();
+
+
+  useEffect(() => {
+    const ids = [...new Set(cart.map((item) => item.goodsId))];
+    fetchByIds(ids);
+  }, [cart]);
+  
+
+  const cartWithGoods = cart.map((cartItem) => {
+    const product = cartGoods.find((e) => e.id === cartItem.goodsId);
+    if (!product) return cartItem;
+    return {
+      ...cartItem,
+      title: product.title,
+      image: product.image,
+      price: product.price,
+    };
+  });
+
+  const subTotal = cartWithGoods.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const deliveryFee = 15
+  const totalPrice = subTotal + deliveryFee
 
   return (
     <>
@@ -17,7 +38,7 @@ export const Cart = () => {
         </h2>
         <div className="flex gap-5">
           <div className="w-full border border-gray-200 rounded-2xl py-5 px-6 self-start">
-            {cartStore.map((cartItem) => (
+            {cartWithGoods.map((cartItem) => (
               <div
                 key={cartItem.id}
                 className="flex flex-row border-b-1 border-gray-200 last:border-none last:pb-0 pb-6 mt-6 first:mt-0 gap-4"
@@ -36,13 +57,13 @@ export const Cart = () => {
                       <p className="text-sm">
                         Size:{" "}
                         <span className="text-gray-400">
-                          {cartItem.selectedSize}
+                          {cartItem.size}
                         </span>
                       </p>
                       <p className="text-sm">
                         Color:{" "}
                         <span className="text-gray-400">
-                          {cartItem.selectedColor}
+                          {cartItem.color}
                         </span>
                       </p>
                     </div>
@@ -58,7 +79,12 @@ export const Cart = () => {
                       }}
                       alt="Delete product from cart"
                     />
-                    <PieceCounter key={cartItem.id} id={cartItem.id}/>
+                    <PieceCounter
+                      count={cartItem.quantity}
+                      onChange={(newQuantity) =>
+                        updateQuantity(cartItem.id, newQuantity)
+                      }
+                    />
                   </div>
                 </div>
               </div>
@@ -70,12 +96,12 @@ export const Cart = () => {
               <div className="flex flex-col gap-4 pb-4 border-b-1 border-gray-200 mb-4">
                 <div className="flex justify-between">
                   <p className="opacity-60 ">Subtotal</p>
-                  <span className="font-[Satoshi-Bold]">${subTotalPrice}</span>
+                  <span className="font-[Satoshi-Bold]">${subTotal}</span>
                 </div>
                 <div className="flex justify-between">
                   <p className="opacity-60">Discount (-20%)</p>
                   <span className="text-[#FF3333] font-[Satoshi-Bold]">
-                    -$113
+                    0
                   </span>
                 </div>
                 <div className="flex justify-between">
@@ -85,9 +111,7 @@ export const Cart = () => {
               </div>
               <div className="flex justify-between">
                 <p>Total</p>
-                <span className="text-2xl font-[Satoshi-Bold]">
-                  ${totalPrice}
-                </span>
+                <span className="text-2xl font-[Satoshi-Bold]">${totalPrice}</span>
               </div>
             </div>
             <div className="w-full flex justify-between gap-3">
@@ -102,7 +126,10 @@ export const Cart = () => {
                 Apply
               </button>
             </div>
-            <button onClick={() => useCartStore.getState().resetCart()} className="w-full bg-black rounded-full py-4.5 dark:text-white relative before:absolute before:w-6 before:h-6 before:block before:bg-[url('src/assets/arrow-full-right.png')] before:bg-no-repeat before:top-[calc(50%-7px)] before:right-[30%]">
+            <button
+              onClick={() => useCartStore.getState().resetCart()}
+              className="w-full bg-black rounded-full py-4.5 dark:text-white relative before:absolute before:w-6 before:h-6 before:block before:bg-[url('src/assets/arrow-full-right.png')] before:bg-no-repeat before:top-[calc(50%-7px)] before:right-[30%]"
+            >
               Go to Checkout
             </button>
           </div>

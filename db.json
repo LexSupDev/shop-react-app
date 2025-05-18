@@ -197,27 +197,5 @@
     }
   ],
   "favorites": [],
-  "cart": [
-    {
-      "goodsId": "07fcd671-bb0a-440b-b588-5526dc38deaa",
-      "size": "X-Large",
-      "color": "#FFFFFF",
-      "quantity": 2,
-      "id": 1
-    },
-    {
-      "goodsId": "07fcd671-bb0a-440b-b588-5526dc38deaa",
-      "size": "Large",
-      "color": "#FFFFFF",
-      "quantity": 3,
-      "id": 2
-    },
-    {
-      "goodsId": "efa139ee-e06b-47fa-ba77-affc667f84bd",
-      "size": "Large",
-      "color": "#FFFFFF",
-      "quantity": 1,
-      "id": 3
-    }
-  ]
+  "cart": []
 }
