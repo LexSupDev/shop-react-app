@@ -14,9 +14,9 @@ export const Card = ({ product }) => {
             alt={title}
           />
         </Link>
-        <div className="relative">
-          <h3 className="font-[Satoshi-Bold] text-xl mb-2">{title}</h3>
-          <p className="opacity-60 pb-1.5">{category}</p>
+        <div className="relative max-w-[295px]">
+          <h3 className="font-[Satoshi-Bold] text-xl mb-2 pr-7">{title}</h3>
+          <p className="opacity-60 mb-1.5">{category}</p>
           <FavoriteIcon product={product} />
         </div>
         <div className="mb-2 flex flex-row gap-3 items-start">
