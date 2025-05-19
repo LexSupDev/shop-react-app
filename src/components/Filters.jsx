@@ -35,6 +35,7 @@ export const Filters = () => {
   const size = [...new Set(filteredList.flatMap((el) => el.size))].sort(
     (a, b) => sizeOrder.indexOf(a) - sizeOrder.indexOf(b)
   );
+  
   const style = ["Casual", "Formal", "Party", "Gym"];
 
   return (

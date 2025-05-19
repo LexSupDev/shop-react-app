@@ -8,12 +8,10 @@ export const Cart = () => {
   const { cart, updateQuantity } = useCartStore();
   const { cartGoods, fetchByIds } = useCartGoodsStore();
 
-
   useEffect(() => {
     const ids = [...new Set(cart.map((item) => item.goodsId))];
     fetchByIds(ids);
   }, [cart]);
-  
 
   const cartWithGoods = cart.map((cartItem) => {
     const product = cartGoods.find((e) => e.id === cartItem.goodsId);
@@ -26,9 +24,11 @@ export const Cart = () => {
     };
   });
 
-  const subTotal = cartWithGoods.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const deliveryFee = 15
-  const totalPrice = subTotal + deliveryFee
+  const subTotal = +cartWithGoods
+    .reduce((sum, item) => sum + item.price * item.quantity, 0)
+    .toFixed(2);
+  const deliveryFee = 15;
+  const totalPrice = subTotal + deliveryFee;
 
   return (
     <>
@@ -56,15 +56,11 @@ export const Cart = () => {
                     <div className="mt-[-20px]">
                       <p className="text-sm">
                         Size:{" "}
-                        <span className="text-gray-400">
-                          {cartItem.size}
-                        </span>
+                        <span className="text-gray-400">{cartItem.size}</span>
                       </p>
                       <p className="text-sm">
                         Color:{" "}
-                        <span className="text-gray-400">
-                          {cartItem.color}
-                        </span>
+                        <span className="text-gray-400">{cartItem.color}</span>
                       </p>
                     </div>
                     <span className="text-2xl font-[Satoshi-Bold]">
@@ -100,9 +96,7 @@ export const Cart = () => {
                 </div>
                 <div className="flex justify-between">
                   <p className="opacity-60">Discount (-20%)</p>
-                  <span className="text-[#FF3333] font-[Satoshi-Bold]">
-                    0
-                  </span>
+                  <span className="text-[#FF3333] font-[Satoshi-Bold]">0</span>
                 </div>
                 <div className="flex justify-between">
                   <p className="opacity-60 ">Delivery Fee</p>
@@ -111,7 +105,9 @@ export const Cart = () => {
               </div>
               <div className="flex justify-between">
                 <p>Total</p>
-                <span className="text-2xl font-[Satoshi-Bold]">${totalPrice}</span>
+                <span className="text-2xl font-[Satoshi-Bold]">
+                  ${totalPrice}
+                </span>
               </div>
             </div>
             <div className="w-full flex justify-between gap-3">

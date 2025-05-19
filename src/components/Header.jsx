@@ -6,8 +6,10 @@ import { Link, NavLink } from "react-router";
 import { useFavoriteStore } from "./Store/FavoriteStore";
 import { useCartStore } from "./Store/CartStore";
 
+const navMenu = ["Shop", "On sale", "New arrival", "Brands"];
+
 export const Header = () => {
-  const navMenu = ["Shop", "On sale", "New arrival", "Brands"];
+  
   const favoriteCount = useFavoriteStore((state) => state.favoriteList.length);
   const cartCount = useCartStore(state => state.cart.length)
 
