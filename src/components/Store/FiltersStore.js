@@ -9,6 +9,8 @@ export const useFiltersStore = create((set, get) => ({
   selectedSizes: [],
 
   updateFilteredList: async () => {
+    const colorsSet = get().selectedColors.map((color) => `/color=${color}`).join("&");
+    console.log(colorsSet)
     const response = await fetch(
       `http://localhost:3000/goods?q=${get().searchQuery}&category_like=${
         get().selectedCategory

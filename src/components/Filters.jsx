@@ -6,18 +6,20 @@ import { useEffect } from "react";
 
 export const Filters = () => {
   const goodsList = useGoodsStore((state) => state.goodsList);
-  const filteredList = useFiltersStore((state) => state.filteredList);
-  const selectedCategory = useFiltersStore((state) => state.selectedCategory);
-  const handleColor = useFiltersStore((state) => state.handleColor);
-  const handleSize = useFiltersStore((state) => state.handleSize);
+  // const filteredList = useFiltersStore((state) => state.filteredList);
+  // const selectedCategory = useFiltersStore((state) => state.selectedCategory);
+  // const handleColor = useFiltersStore((state) => state.handleColor);
+  // const handleSize = useFiltersStore((state) => state.handleSize);
 
-  const searchQuery = useFiltersStore((state) => state.searchQuery);
-  const updateFilteredList = useFiltersStore((state) => state.updateFilteredList);
-  const selectedPrice = useFiltersStore((state) => state.selectedPrice);
+  // const searchQuery = useFiltersStore((state) => state.searchQuery);
+  // const updateFilteredList = useFiltersStore((state) => state.updateFilteredList);
+  // const selectedPrice = useFiltersStore((state) => state.selectedPrice);
+
+  const {filteredList, selectedCategory, handleColor, handleSize, searchQuery, updateFilteredList, selectedPrice, selectedColors, selectedSizes} = useFiltersStore()
 
   useEffect(() => {
     updateFilteredList();
-  }, [searchQuery, selectedCategory, selectedPrice]);
+  }, [searchQuery, selectedCategory, selectedPrice, selectedColors]);
 
   const categories = [...new Set(goodsList.map((el) => el.category))];
   const colors = [...new Set(filteredList.flatMap((el) => el.colors))];

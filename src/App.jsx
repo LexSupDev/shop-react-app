@@ -10,7 +10,6 @@ import { ProductCard } from "./components/Pages/ProductCard";
 import { Footer } from "./components/Footer";
 import { useFavoriteStore } from "./components/Store/FavoriteStore";
 import { useGoodsStore } from "./components/Store/GoodsStore";
-import { useFiltersStore } from "./components/Store/FiltersStore";
 import { useCartStore } from "./components/Store/CartStore";
 
 function App() {
