@@ -6,23 +6,14 @@ import { useEffect } from "react";
 
 export const Filters = () => {
   const goodsList = useGoodsStore((state) => state.goodsList);
-  // const filteredList = useFiltersStore((state) => state.filteredList);
-  // const selectedCategory = useFiltersStore((state) => state.selectedCategory);
-  // const handleColor = useFiltersStore((state) => state.handleColor);
-  // const handleSize = useFiltersStore((state) => state.handleSize);
-
-  // const searchQuery = useFiltersStore((state) => state.searchQuery);
-  // const updateFilteredList = useFiltersStore((state) => state.updateFilteredList);
-  // const selectedPrice = useFiltersStore((state) => state.selectedPrice);
-
-  const {filteredList, selectedCategory, handleColor, handleSize, searchQuery, updateFilteredList, selectedPrice, selectedColors, selectedSizes} = useFiltersStore()
+  const {selectedCategory, handleColor, handleSize, searchQuery, fetchFilteredList, selectedPrice} = useFiltersStore()
 
   useEffect(() => {
-    updateFilteredList();
-  }, [searchQuery, selectedCategory, selectedPrice, selectedColors]);
+    fetchFilteredList();
+  }, [searchQuery, selectedCategory, selectedPrice]);
 
   const categories = [...new Set(goodsList.map((el) => el.category))];
-  const colors = [...new Set(filteredList.flatMap((el) => el.colors))];
+  const colors = [...new Set(goodsList.flatMap((el) => el.colors))];
   const sizeOrder = [
     "XX-Small",
     "X-Small",
@@ -34,7 +25,7 @@ export const Filters = () => {
     "3X-Large",
     "4X-Large",
   ];
-  const size = [...new Set(filteredList.flatMap((el) => el.size))].sort(
+  const size = [...new Set(goodsList.flatMap((el) => el.size))].sort(
     (a, b) => sizeOrder.indexOf(a) - sizeOrder.indexOf(b)
   );
   

@@ -17982,6 +17982,40 @@
       ]
     }
   ],
-  "favorites": [],
-  "cart": []
+  "favorites": [
+    {
+      "id": "4b1c4c77-6018-4bb6-9339-dfad2c31fe8a",
+      "image": "http://dummyimage.com/295x295.png/5fa2dd/ffffff",
+      "title": "Beef Sirloin Steak",
+      "stars": 2,
+      "category": "Skirts",
+      "price": 23,
+      "colors": [
+        "#00ff00",
+        "#009900"
+      ],
+      "size": [
+        "2X-Large",
+        "Small",
+        "4X-Large",
+        "Medium"
+      ]
+    }
+  ],
+  "cart": [
+    {
+      "goodsId": "4a6eaa89-c06a-49d3-934c-ee53490bc394",
+      "size": "3X-Large",
+      "color": "#009900",
+      "quantity": 2,
+      "id": 1
+    },
+    {
+      "goodsId": "ea62cbff-37ad-4f00-8091-bc7cebb52d17",
+      "size": "",
+      "color": "",
+      "quantity": 2,
+      "id": 2
+    }
+  ]
 }
