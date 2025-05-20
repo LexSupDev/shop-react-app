@@ -9,40 +9,34 @@ export const useFiltersStore = create((set, get) => ({
   selectedSizes: [],
 
   fetchFilteredList: async () => {
-    const colorsSet = get()
-      .selectedColors.map((color) => `${color}`)
-      .join("&");
-    console.log(colorsSet);
+    const {
+      searchQuery,
+      selectedCategory,
+      selectedPrice,
+      selectedColors,
+      selectedSizes,
+    } = get();
+
     const response = await fetch(
-      `http://localhost:3000/goods?q=${get().searchQuery}&category_like=${
-        get().selectedCategory
-      }&price_gte=${get().selectedPrice.min}&price_lte=${
-        get().selectedPrice.max
-      }&color=${colorsSet}`
+      `http://localhost:3000/goods?q=${searchQuery}&category_like=${selectedCategory}&price_gte=${selectedPrice.min}&price_lte=${selectedPrice.max}`
     );
-    const data = await response.json();
-    set({ filteredList: data });
-  },
 
-  updateFilteredList: async () => {
-    const response = await fetch(`http://localhost:3000/goods`);
     const data = await response.json();
 
-    set({
-      filteredList: data.filter((item) => {
-        const { selectedColors, selectedSizes } = get();
+    const filtered = data.filter((item) => {
+      const colorMatch =
+        selectedColors.length === 0 ||
+        selectedColors.some((color) => item.colors.includes(color));
 
-        const colorMatch =
-          selectedColors.length === 0 ||
-          selectedColors.some((color) => item.colors.includes(color));
+      const sizeMatch =
+        selectedSizes.length === 0 ||
+        selectedSizes.some((size) => item.size.includes(size));
 
-        const sizeMatch =
-          selectedSizes.length === 0 ||
-          selectedSizes.some((size) => item.size.includes(size));
-
-        return colorMatch && sizeMatch;
-      }),
+      return colorMatch && sizeMatch;
     });
+
+    set({ filteredList: filtered });
+    console.log(filtered)
   },
 
   handleColor: (color) => {
@@ -51,7 +45,6 @@ export const useFiltersStore = create((set, get) => ({
           selectedColors: get().selectedColors.filter((el) => el !== color),
         })
       : set({ selectedColors: [...get().selectedColors, color] });
-    get().updateFilteredList();
   },
 
   handleSize: (size) => {
@@ -60,6 +53,5 @@ export const useFiltersStore = create((set, get) => ({
           selectedSizes: get().selectedSizes.filter((el) => el !== size),
         })
       : set({ selectedSizes: [...get().selectedSizes, size] });
-    get().updateFilteredList();
   },
 }));

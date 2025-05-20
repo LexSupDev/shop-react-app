@@ -6,11 +6,11 @@ import { useEffect } from "react";
 
 export const Filters = () => {
   const goodsList = useGoodsStore((state) => state.goodsList);
-  const {selectedCategory, handleColor, handleSize, searchQuery, fetchFilteredList, selectedPrice} = useFiltersStore()
+  const {selectedCategory, handleColor, handleSize, searchQuery, fetchFilteredList, selectedPrice, selectedColors, selectedSizes} = useFiltersStore()
 
   useEffect(() => {
     fetchFilteredList();
-  }, [searchQuery, selectedCategory, selectedPrice]);
+  }, [searchQuery, selectedCategory, selectedPrice, selectedColors, selectedSizes]);
 
   const categories = [...new Set(goodsList.map((el) => el.category))];
   const colors = [...new Set(goodsList.flatMap((el) => el.colors))];

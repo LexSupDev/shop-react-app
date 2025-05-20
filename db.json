@@ -18000,6 +18000,23 @@
         "4X-Large",
         "Medium"
       ]
+    },
+    {
+      "id": "e00f253b-57c7-46b6-8675-150234b3d535",
+      "image": "http://dummyimage.com/295x295.png/5fa2dd/ffffff",
+      "title": "Spaghetti Squash",
+      "stars": 1.5,
+      "category": "Skirts",
+      "price": 69.5,
+      "colors": [
+        "#990000",
+        "#ff0000",
+        "#660066"
+      ],
+      "size": [
+        "X-Small",
+        "XX-Large"
+      ]
     }
   ],
   "cart": [
