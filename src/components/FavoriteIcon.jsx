@@ -9,7 +9,7 @@ export const FavoriteIcon = ({ product }) => {
   return (
     <>
       <span
-        className="absolute top-0.5 right-0"
+        className="absolute top-0.5 right-0 cursor-pointer"
         onClick={() => handleFavorites(product)}
       >
         <svg

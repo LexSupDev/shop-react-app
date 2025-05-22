@@ -17984,95 +17984,43 @@
   ],
   "favorites": [
     {
-      "id": "58993189-3dbe-4418-8d61-b154fa9bfa88",
-      "image": "http://dummyimage.com/295x295.png/5fa2dd/ffffff",
-      "title": "Kettle Corn Popcorn",
-      "stars": 4.5,
-      "category": "Pants",
-      "price": 71.9,
-      "colors": [
-        "#009900",
-        "#0000ff",
-        "#990000"
-      ],
-      "size": [
-        "2X-Large",
-        "4X-Large"
-      ]
-    },
-    {
-      "id": "3cc70f35-0f9f-4218-8f95-8200acdc0ada",
-      "image": "http://dummyimage.com/295x295.png/ff4444/ffffff",
-      "title": "Fruit Medley Juice",
+      "id": "826e00db-bf98-4274-b097-d479d56e5135",
+      "image": "http://dummyimage.com/295x295.png/cc0000/ffffff",
+      "title": "Artisan Cornbread Mix",
       "stars": 1,
-      "category": "Shorts",
-      "price": 68.1,
+      "category": "Skirts",
+      "price": 12.4,
       "colors": [
-        "#ff0000",
+        "#ff9900",
         "#006666",
-        "#00ff00"
+        "#009900"
       ],
       "size": [
-        "Large",
-        "X-Large",
-        "XX-Large",
+        "3X-Large",
+        "Small",
         "Medium",
+        "Large",
+        "4X-Large",
         "X-Small"
       ]
     },
     {
-      "id": "e00f253b-57c7-46b6-8675-150234b3d535",
-      "image": "http://dummyimage.com/295x295.png/5fa2dd/ffffff",
-      "title": "Spaghetti Squash",
-      "stars": 1.5,
-      "category": "Skirts",
-      "price": 69.5,
+      "id": "98e91da1-7e59-4f85-bb73-e0a8d52adfc5",
+      "image": "http://dummyimage.com/295x295.png/cc0000/ffffff",
+      "title": "LED Desk Lamp",
+      "stars": 5,
+      "category": "Shorts",
+      "price": 10.4,
       "colors": [
-        "#990000",
-        "#ff0000",
-        "#660066"
+        "#00ff00",
+        "#ff9900"
       ],
       "size": [
-        "X-Small",
-        "XX-Large"
+        "Large",
+        "3X-Large",
+        "Medium"
       ]
     }
   ],
-  "cart": [
-    {
-      "goodsId": "4a6eaa89-c06a-49d3-934c-ee53490bc394",
-      "size": "3X-Large",
-      "color": "#009900",
-      "quantity": 3,
-      "id": 1
-    },
-    {
-      "goodsId": "ea62cbff-37ad-4f00-8091-bc7cebb52d17",
-      "size": "",
-      "color": "",
-      "quantity": 16,
-      "id": 2
-    },
-    {
-      "goodsId": "e00f253b-57c7-46b6-8675-150234b3d535",
-      "size": "X-Small",
-      "color": "#ff0000",
-      "quantity": 2,
-      "id": 3
-    },
-    {
-      "goodsId": "236555b9-51c1-4b21-8190-b02642c75ad5",
-      "size": "2X-Large",
-      "color": "#660066",
-      "quantity": 8,
-      "id": 4
-    },
-    {
-      "goodsId": "e00f253b-57c7-46b6-8675-150234b3d535",
-      "size": "X-Small",
-      "color": "#990000",
-      "quantity": 10,
-      "id": 5
-    }
-  ]
+  "cart": []
 }

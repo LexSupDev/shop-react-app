@@ -7,9 +7,12 @@ export const useFiltersStore = create((set, get) => ({
   selectedPrice: { min: 50, max: 200 },
   selectedColors: [],
   selectedSizes: [],
+  totalPages: 0,
+  selectedPage: "1",
+  pageLimit: "9",
   selectedSort: {
-    sortBy: "",
-    order: ""
+    sortBy: "stars",
+    order: "desc",
   },
 
   fetchFilteredList: async () => {
@@ -19,14 +22,19 @@ export const useFiltersStore = create((set, get) => ({
       selectedPrice,
       selectedColors,
       selectedSizes,
+      selectedPage,
+      pageLimit,
     } = get();
-    const {sortBy, order} = get().selectedSort
+    const { sortBy, order } = get().selectedSort;
 
     const response = await fetch(
-      `http://localhost:3000/goods?q=${searchQuery}&category_like=${selectedCategory}&price_gte=${selectedPrice.min}&price_lte=${selectedPrice.max}&_sort=${sortBy}&_order=${order}`
+      `http://localhost:3000/goods?q=${searchQuery}&category_like=${selectedCategory}&price_gte=${selectedPrice.min}&price_lte=${selectedPrice.max}&_sort=${sortBy}&_order=${order}&_page=${selectedPage}&_limit=${pageLimit}`
     );
 
     const data = await response.json();
+    const totalPages = Math.ceil(
+      response.headers.get("X-Total-Count") / pageLimit
+    );
 
     const filtered = data.filter((item) => {
       const colorMatch =
@@ -40,7 +48,7 @@ export const useFiltersStore = create((set, get) => ({
       return colorMatch && sizeMatch;
     });
 
-    set({ filteredList: filtered });
+    set({ filteredList: filtered, totalPages: totalPages });
   },
 
   handleColor: (color) => {
