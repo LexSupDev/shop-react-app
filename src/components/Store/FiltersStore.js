@@ -7,6 +7,10 @@ export const useFiltersStore = create((set, get) => ({
   selectedPrice: { min: 50, max: 200 },
   selectedColors: [],
   selectedSizes: [],
+  selectedSort: {
+    sortBy: "",
+    order: ""
+  },
 
   fetchFilteredList: async () => {
     const {
@@ -16,9 +20,10 @@ export const useFiltersStore = create((set, get) => ({
       selectedColors,
       selectedSizes,
     } = get();
+    const {sortBy, order} = get().selectedSort
 
     const response = await fetch(
-      `http://localhost:3000/goods?q=${searchQuery}&category_like=${selectedCategory}&price_gte=${selectedPrice.min}&price_lte=${selectedPrice.max}`
+      `http://localhost:3000/goods?q=${searchQuery}&category_like=${selectedCategory}&price_gte=${selectedPrice.min}&price_lte=${selectedPrice.max}&_sort=${sortBy}&_order=${order}`
     );
 
     const data = await response.json();
