@@ -17984,21 +17984,40 @@
   ],
   "favorites": [
     {
-      "id": "4b1c4c77-6018-4bb6-9339-dfad2c31fe8a",
+      "id": "58993189-3dbe-4418-8d61-b154fa9bfa88",
       "image": "http://dummyimage.com/295x295.png/5fa2dd/ffffff",
-      "title": "Beef Sirloin Steak",
-      "stars": 2,
-      "category": "Skirts",
-      "price": 23,
+      "title": "Kettle Corn Popcorn",
+      "stars": 4.5,
+      "category": "Pants",
+      "price": 71.9,
       "colors": [
-        "#00ff00",
-        "#009900"
+        "#009900",
+        "#0000ff",
+        "#990000"
       ],
       "size": [
         "2X-Large",
-        "Small",
-        "4X-Large",
-        "Medium"
+        "4X-Large"
+      ]
+    },
+    {
+      "id": "3cc70f35-0f9f-4218-8f95-8200acdc0ada",
+      "image": "http://dummyimage.com/295x295.png/ff4444/ffffff",
+      "title": "Fruit Medley Juice",
+      "stars": 1,
+      "category": "Shorts",
+      "price": 68.1,
+      "colors": [
+        "#ff0000",
+        "#006666",
+        "#00ff00"
+      ],
+      "size": [
+        "Large",
+        "X-Large",
+        "XX-Large",
+        "Medium",
+        "X-Small"
       ]
     },
     {
@@ -18024,15 +18043,36 @@
       "goodsId": "4a6eaa89-c06a-49d3-934c-ee53490bc394",
       "size": "3X-Large",
       "color": "#009900",
-      "quantity": 2,
+      "quantity": 3,
       "id": 1
     },
     {
       "goodsId": "ea62cbff-37ad-4f00-8091-bc7cebb52d17",
       "size": "",
       "color": "",
-      "quantity": 2,
+      "quantity": 16,
       "id": 2
+    },
+    {
+      "goodsId": "e00f253b-57c7-46b6-8675-150234b3d535",
+      "size": "X-Small",
+      "color": "#ff0000",
+      "quantity": 2,
+      "id": 3
+    },
+    {
+      "goodsId": "236555b9-51c1-4b21-8190-b02642c75ad5",
+      "size": "2X-Large",
+      "color": "#660066",
+      "quantity": 8,
+      "id": 4
+    },
+    {
+      "goodsId": "e00f253b-57c7-46b6-8675-150234b3d535",
+      "size": "X-Small",
+      "color": "#990000",
+      "quantity": 10,
+      "id": 5
     }
   ]
 }

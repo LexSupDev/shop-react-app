@@ -41,7 +41,6 @@ export const useFiltersStore = create((set, get) => ({
     });
 
     set({ filteredList: filtered });
-    console.log(filtered)
   },
 
   handleColor: (color) => {
